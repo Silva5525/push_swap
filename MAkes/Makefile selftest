@@ -1,0 +1,50 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile selftest                                  :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/14 10:35:50 by wdegraf           #+#    #+#              #
+#    Updated: 2023/11/20 17:24:28 by wdegraf          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# this one is for selftest 
+
+CFLAGS = -Wall -Werror -Wextra -g
+
+NAME = libftprintf.a
+
+SRCS = ft_printf.c ft_printf_xXpu.c
+OBJS = $(SRCS:.c=.o)
+
+LIBFT_SRC = ./LIBFT
+
+LIBFT_OBJS = $(LIBFT_SRC:.c=.o)
+
+INCLUDES = -I $(LIBFT_SRC)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(MAKE) -C $(LIBFT_SRC) bonus
+	ar rcs $(NAME) $(OBJS)
+	
+%.o: %.c 
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES) 
+
+test: $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(NAME)
+
+clean: 
+	rm $(OBJS) 
+	$(MAKE) -C $(LIBFT_SRC) clean
+
+fclean: clean 
+	rm $(NAME) 
+	$(MAKE) -C $(LIBFT_SRC) fclean
+
+re: fclean all 
+
+.PHONY: all clean fclean re 

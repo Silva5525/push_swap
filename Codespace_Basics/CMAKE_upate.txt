@@ -1,0 +1,11 @@
+# Download the latest version of CMake (replace "3.20.2" with the actual latest version)
+wget https://github.com/Kitware/CMake/releases/download/v3.20.2/cmake-3.20.2-Linux-x86_64.sh
+
+# Make the installer executable
+chmod +x cmake-3.20.2-Linux-x86_64.sh
+
+# Run the installer (answer yes to all prompts to agree to the license and specify the installation directory)
+sudo ./cmake-3.20.2-Linux-x86_64.sh --skip-license --prefix=/usr/local
+
+# Verify the installation
+cmake --version
