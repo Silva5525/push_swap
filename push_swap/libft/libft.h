@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:13:48 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/22 11:20:02 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/03/27 13:43:06 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-char	**ft_split(const char *s, char c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -81,6 +80,7 @@ int		v_di(va_list *args);
 int		ft_intlen(int n);
 void	ft_lstiter_ptr(t_list *lst, void (*f)(void *, void *), void *ptr);
 t_list	*ft_lstget(t_list *lst, int index);
+ssize_t	ft_strcwords(char *str, char delimeter);
 
 ssize_t	ft_write(int fd, const void *buf, size_t count);
 

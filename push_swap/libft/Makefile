@@ -6,7 +6,7 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 10:36:05 by wdegraf           #+#    #+#              #
-#    Updated: 2024/03/22 11:08:10 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/03/26 18:14:45 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
 		ft_printf_xXpudi.c ft_printf.c ft_intlen.c \
 		get_next_line.c get_next_line_utils.c ft_lstiter_f_bonus.c \
-		ft_lstget.c ft_write.c
+		ft_lstget.c ft_write.c ft_strcwords.c
 
 OBJS = $(SRCS:.c=.o)
 

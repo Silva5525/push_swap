@@ -6,32 +6,28 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 11:57:39 by wdegraf           #+#    #+#              #
-#    Updated: 2024/03/22 11:58:28 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/03/28 13:31:29 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 CC		:= cc
 CFLAGS	:= -Wall -Werror -Wextra -Wunreachable-code -Ofast -g -fsanitize=address
-LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # MacOS
-# LIBS	:= $(LIBMLX)/build/libmlx42.a -lglfw -framework Cocoa -framework OpenGL -framework IOKit -L$(LIBFT) -lft
+# LIBS	:= -L$(LIBFT) -lft
 # linux
-LIBS := $(LIBMLX)/build/libmlx42.a $(shell pkg-config --static --libs glfw3 gl) -L$(LIBFT) -lft
-# LIBS	:= -L$(LIBFT) -lft $(LIBMLX)/build/libmlx42.a $(shell pkg-config --static --libs glfw3) -ldl
+LIBS := -L$(LIBFT) -lft
 
 
-SRCS	:= main.c
+SRCS	:= main.c exit_manager.c first_utils.c push_swap.c push.c rotation.c \
+			reverse_rotation.c sort.c swap.c
 OBJS	:= ${SRCS:.c=.o}
 
-all: libmlx libft $(NAME)
-
-libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+all: libft $(NAME)
 
 libft:
 	@make -C $(LIBFT)
