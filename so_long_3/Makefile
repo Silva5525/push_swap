@@ -6,7 +6,7 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 13:57:59 by wdegraf           #+#    #+#              #
-#    Updated: 2024/03/22 14:11:42 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/03/31 14:10:32 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -rf $(OBJS)
-	@rm -rf $(LIBMLX)/build
+#	@rm -rf $(LIBMLX)/build
 	@make -C $(LIBFT) clean
 
 fclean: clean

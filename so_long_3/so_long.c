@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:02:50 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/22 14:02:53 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/03/26 14:32:31 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	if_hook1(mlx_t	*mlx)
 void	ft_hook2(void *param)
 {
 	mlx_t	*mlx;
+
 
 	mlx = param;
 	if_hook1(mlx);
