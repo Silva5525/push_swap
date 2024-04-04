@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 14:07:21 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/22 14:13:14 by wdegraf          ###   ########.fr       */
+/*   Created: 2023/10/12 14:13:48 by wdegraf           #+#    #+#             */
+/*   Updated: 2024/03/17 16:13:20 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,5 @@ int		v_di(va_list *args);
 int		ft_intlen(int n);
 void	ft_lstiter_ptr(t_list *lst, void (*f)(void *, void *), void *ptr);
 t_list	*ft_lstget(t_list *lst, int index);
-
-ssize_t	ft_write(int fd, const void *buf, ssize_t count);
 
 #endif

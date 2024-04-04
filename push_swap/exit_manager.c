@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:26:16 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/27 17:25:14 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/04 11:03:19 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	error(int error_code, t_link *a, char **argv, int argc)
 	exit(EXIT_FAILURE);
 }
 
-int if_dubplicate(t_link *a, int num)
+int	if_dubplicate(t_link *a, int num)
 {
 	if (!a)
 		return (0);

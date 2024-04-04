@@ -5,14 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 14:04:33 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/22 14:04:36 by wdegraf          ###   ########.fr       */
+/*   Created: 2024/03/13 15:39:10 by wdegraf           #+#    #+#             */
+/*   Updated: 2024/04/03 17:14:22 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	if_1(t_so_long *sl, int x, int y, int z)
+/// @brief extends the function rendering2 
+/// @param sl the struct that holds the data
+/// @param x parameter x in the while loop
+/// @param y parameter y in the while loop
+/// @param z for the gold instances
+static void	if_1(t_so_long *sl, int x, int y, int z)
 {
 	if (sl->map[y][x] == '0' || sl->map[y][x] == 'P'
 	|| sl->map[y][x] == 'G')
@@ -32,9 +37,11 @@ static int	if_1(t_so_long *sl, int x, int y, int z)
 			sl->gold->instances[0].z = z;
 		}
 	}
-	return (0);
 }
 
+/// @brief the second rendering function that renders the map while the game
+/// is running. 
+/// @param sl struct that holds the data
 void	rendering2(t_so_long *sl)
 {
 	int	x;
@@ -62,28 +69,37 @@ void	rendering2(t_so_long *sl)
 	}
 }
 
-void	counter_img(t_so_long *sl)
+/// @brief It retrieves the color of a pixel at the given coordinates and
+/// returns it as an integer in the format 0xRRGGBBAA for further processing
+/// in the function img_to_img.
+/// @param image the image struct
+/// @param x position x = j in the while loop of img_to_img
+/// @param y position y = i in the while loop of img_to_img
+/// @return the color of the pixel
+static int	pixel(mlx_image_t *image, uint32_t x, uint32_t y)
 {
-	char	*str1;
-	char	*str2;
-	char	*str3;
-	char	*str4;
-	char	*str5;
+	int		r;
+	int		g;
+	int		b;
+	int		a;
+	uint8_t	*pixel;
 
-	ft_printf("Steps: %d\n", sl->hero->instances[0].z);
-	str1 = ft_itoa(sl->hero->instances[0].z);
-	str3 = ft_strjoin("Steps: ", str1);
-	str2 = ft_itoa(sl->gold->instances[0].z);
-	str4 = ft_strjoin(" / Gold: ", str2);
-	str5 = ft_strjoin(str3, str4);
-	mlx_put_string(sl->mlx, str5, 0, 0);
-	free(str1);
-	free(str2);
-	free(str3);
-	free(str4);
-	free(str5);
+	if (x > image->width || y > image->height)
+		return (0xFF000000);
+	pixel = image->pixels + (y * image->width + x) * sizeof(uint32_t);
+	r = pixel[0];
+	g = pixel[1];
+	b = pixel[2];
+	a = pixel[3];
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
+/// @brief puts the color of a pixel at the given coordinates from the source
+/// image to the destination image.
+/// @param dst destination image {mostly the window image}
+/// @param src source image {mostly the different pictures}
+/// @param x destination x coordinates
+/// @param y destination y coordinates
 void	mlx_img_to_img(mlx_image_t *dst, mlx_image_t *src, int x, int y)
 {
 	uint32_t	i;
@@ -96,7 +112,7 @@ void	mlx_img_to_img(mlx_image_t *dst, mlx_image_t *src, int x, int y)
 		j = 0;
 		while (j < src->width)
 		{
-			color = mlx_get_pixel(src, j, i);
+			color = pixel(src, j, i);
 			mlx_put_pixel(dst, x + j, y + i, color);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:13:48 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/27 13:43:06 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/04 10:18:29 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-
+char	**ft_split(const char *s, char c);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *str, int value, size_t len);
 void	*ft_calloc(size_t count, size_t size);

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 14:02:28 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/28 13:39:13 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/04 11:42:13 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	do_stack(t_link **a, char **argv, int argc)
 	ssize_t			num;
 	int				i;
 
-	i = 0;
+	i = 1;
 	while (argv[i] != NULL)
 	{
 		num = ft_atoi(argv[i]);
@@ -31,7 +31,6 @@ void	do_stack(t_link **a, char **argv, int argc)
 		free_argv(argv);
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_link	*a;
@@ -41,7 +40,7 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	if (argc < 2 || !argv[1][0])
-		return(-1);
+		return (-1);
 	splargv = ft_split(argv[1], ' ');
 	do_stack(&a, splargv, argc);
 	if (!if_sorted(a))

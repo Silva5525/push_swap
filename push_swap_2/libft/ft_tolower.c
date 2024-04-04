@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 10:59:10 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/22 14:07:09 by wdegraf          ###   ########.fr       */
+/*   Created: 2023/10/09 18:49:13 by wdegraf           #+#    #+#             */
+/*   Updated: 2023/11/09 18:15:32 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/// @brief Safe version of the write function
-/// @param fd File Descriptor
-/// @param buf Buffer for the String to write
-/// @param count how many bytes to write
-/// @return the number of bytes written
-ssize_t	ft_write(int fd, const void *buf, ssize_t count)
+/// @brief From uppercase to lowercase
+/// @param c char to lower
+/// @return the lowercase char
+int	ft_tolower(int c)
 {
-	ssize_t	bytes_written;
-
-	bytes_written = write(fd, buf, count);
-	if (bytes_written == -1)
+	if (c >= 65 && c <= 90)
 	{
-		perror("write failed");
-		exit(EXIT_FAILURE);
+		c += 32;
+		return (c);
 	}
-	return (bytes_written);
+	return (c);
 }
+
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	b = 'P';
+// 	b = ft_tolower(b);
+// 	printf("%c\n", b);
+// 	return (0);
+// }

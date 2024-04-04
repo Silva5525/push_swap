@@ -12,7 +12,6 @@
 
 #include "get_next_line.h"
 
-
 char	*ft_strchr2(const char *s, int c)
 {
 	while (s && *s)

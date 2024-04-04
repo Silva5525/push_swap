@@ -5,21 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/22 13:57:59 by wdegraf           #+#    #+#              #
-#    Updated: 2024/03/31 14:10:32 by wdegraf          ###   ########.fr        #
+#    Created: 2024/03/06 13:40:15 by wdegraf           #+#    #+#              #
+#    Updated: 2024/04/03 19:18:36 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= so_long
 CC		:= cc
-CFLAGS	:= -Wall -Wextra -Wunreachable-code -Ofast -g -fsanitize=address
+CFLAGS	:= -Wall -Werror -Wextra -Wunreachable-code -Ofast -g -fsanitize=address
 LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
-#	IBS	:= $(LIBMLX)/build/libmlx42.a -lglfw -framework Cocoa -framework OpenGL -framework IOKit -L$(LIBFT) -lft
-LIBS := $(LIBMLX)/build/libmlx42.a $(shell pkg-config --static --libs glfw3 gl) -L$(LIBFT) -lft
+LIBS	:= $(LIBMLX)/build/libmlx42.a -lglfw -framework Cocoa -framework OpenGL -framework IOKit -L$(LIBFT) -lft
+# LIBS := $(LIBMLX)/build/libmlx42.a $(shell pkg-config --static --libs glfw3 gl) -L$(LIBFT) -lft
 # LIBS	:= -L$(LIBFT) -lft $(LIBMLX)/build/libmlx42.a $(shell pkg-config --static --libs glfw3) -ldl
 
 
@@ -42,14 +42,14 @@ $(NAME): $(OBJS)
 #-ldl -lglfw -lm  -L$(LIBFT) -lft $(LIBMLX)/build/libmlx42.a
 
 # %.o: %.c
-#	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
+# 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 # $(NAME): $(OBJS)
-#	$(CC) -v $(OBJS) $(CFLAGS) $(LIBS) -o $(NAME)
+# 	$(CC) -v $(OBJS) $(CFLAGS) $(LIBS) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJS)
-#	@rm -rf $(LIBMLX)/build
+	@rm -rf $(LIBMLX)/build
 	@make -C $(LIBFT) clean
 
 fclean: clean

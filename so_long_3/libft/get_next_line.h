@@ -6,10 +6,9 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:17:46 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/02/20 19:46:05 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/03 12:15:54 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H

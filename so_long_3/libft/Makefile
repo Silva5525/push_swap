@@ -3,13 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
+#    By: vscode <vscode@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/22 14:12:10 by wdegraf           #+#    #+#              #
-#    Updated: 2024/03/22 14:12:27 by wdegraf          ###   ########.fr        #
+#    Created: 2023/11/14 10:36:05 by wdegraf           #+#    #+#              #
+#    Updated: 2024/03/21 12:21:04 by vscode           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -28,7 +27,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
 		ft_printf_xXpudi.c ft_printf.c ft_intlen.c \
 		get_next_line.c get_next_line_utils.c ft_lstiter_f_bonus.c \
-		ft_lstget.c ft_write.c
+		ft_lstget.c
 
 OBJS = $(SRCS:.c=.o)
 

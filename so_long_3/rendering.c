@@ -6,12 +6,15 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 19:05:55 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/26 14:24:08 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/03 17:12:22 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/// @brief checks if the argv[1] is a .ber
+/// @param sl holds the data
+/// @return 1 if its a .ber file, 0 if not
 int	map_correct(t_so_long *sl)
 {
 	char		*file_symbol;
@@ -29,6 +32,9 @@ int	map_correct(t_so_long *sl)
 	return (1);
 }
 
+/// @brief checks if the map is surrounded by walls
+/// @param sl data struct
+/// @return 0 if the map is surrounded by walls, 1 if not
 static int	check_wall(t_so_long *sl)
 {
 	int	i;
@@ -50,6 +56,11 @@ static int	check_wall(t_so_long *sl)
 	return (0);
 }
 
+/// @brief uses get_next_line to read the map 
+/// and checks if the map is valid 
+/// @param sl struct that holds the data
+/// @return 0 if the map is valid else it uses end_cite2
+/// to exit the program
 int	read_map2(t_so_long *sl)
 {
 	int		i;
@@ -78,7 +89,11 @@ int	read_map2(t_so_long *sl)
 	return (0);
 }
 
-void	render_render(t_so_long *sl, int x, int y)
+/// @brief renders the map.. its just a extansion of rendering
+/// @param sl struct that holds the data
+/// @param x the x coordinate for the map double array
+/// @param y the y coordinate for the map double array
+static void	render_render(t_so_long *sl, int x, int y)
 {
 	if (sl->map[y][x] == 'E')
 	{
@@ -105,6 +120,8 @@ void	render_render(t_so_long *sl, int x, int y)
 	}
 }
 
+/// @brief reads the map and renders it the first time
+/// @param sl struct that holds the data
 void	rendering(t_so_long *sl)
 {
 	int	x;
