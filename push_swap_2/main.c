@@ -6,23 +6,46 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/04 11:57:13 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/06 13:34:26 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void error1(char **argv, int err_num)
+void	error1(char **argv, int err_num)
 {
 	if (err_num == 1)
-		ft_write(2, "Error\n duplicated number found.\n", 35);
+		ft_write(1, "Error\n duplicated number found.\n", 35);
 	free_argv(argv);
 	exit(EXIT_FAILURE);
 }
 
-void double_list(t_link **a, int num)
+void	error2(char **argv, t_link **a, int err_num)
 {
-	
+	if (err_num == 2)
+		ft_write(1, "Error\n only one number found.\n", 31);
+	free_argv(argv);
+	exit(EXIT_FAILURE);
+}
+
+void	double_list(t_link **a, int num)
+{
+	t_link	*new;
+	t_link	*current;
+
+	new->num = num;
+	new->next = NULL;
+	new->prev = NULL;
+	if (!*a)
+		*a = new;
+	else
+	{
+		current = *a;
+		while (current->next)
+			current = current->next;
+		current->next = new;
+		new->prev = current;
+	}
 }
 
 void	check_stack(t_link *a, char **argv, int argc)
@@ -42,7 +65,7 @@ void	check_stack(t_link *a, char **argv, int argc)
 				error1(argv, 1);
 			a = a->next;
 		}
-		double_list()
+		double_list(a, num);
 		i++;
 	}
 	if (argc == 2)
@@ -64,5 +87,12 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	check_stack(&a, argv, argc);
+	if (!sorted(a))
+	{
+		if (a->next == NULL)
+			error1(argv, a, 2)
+		else if (a->next->next == NULL)
+			
+	}
 	return (0);
 }

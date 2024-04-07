@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/06 12:57:00 by wdegraf          ###   ########.fr       */
+/*   Created: 2024/04/06 14:23:07 by wdegraf           #+#    #+#             */
+/*   Updated: 2024/04/07 19:18:55 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include <limits.h>
-
-typedef struct s_link
+static void	swap(t_link **link)
 {
-	int				num;
-	struct s_link	*next;
-	struct s_link	*actual;
-	struct s_link	*prev;
-}	t_link;
+	t_link	*a;
+	t_link	*b;
 
-void		error1(char **argv, int err_num);
+	if (!*link || !(*link)->next || (*link) == (*link)->next)
+		return ;
 
-#endif
+}
