@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/06 13:34:26 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/10 11:47:12 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int	main(int argc, char **argv)
 	if (!sorted(a))
 	{
 		if (a->next == NULL)
-			error1(argv, a, 2)
-		else if (a->next->next == NULL)
+			error1(argv, &a, 2)
+		else if (a->next->next == NULL);
 			
 	}
 	return (0);

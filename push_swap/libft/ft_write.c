@@ -6,13 +6,13 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 10:59:10 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/22 11:13:00 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/10 11:49:12 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/// @brief Safe version of the write function
+/// @brief Safe version of the write function with error if write fails
 /// @param fd File Descriptor
 /// @param buf Buffer for the String to write
 /// @param count how many bytes to write

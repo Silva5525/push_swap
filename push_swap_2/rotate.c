@@ -1,50 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 14:23:07 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/10 11:50:15 by wdegraf          ###   ########.fr       */
+/*   Created: 2024/04/10 11:51:38 by wdegraf           #+#    #+#             */
+/*   Updated: 2024/04/10 12:19:11 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_link **link)
+static void	rotate(t_link **link)
 {
 	t_link	*tmp;
 
 	if (!*link || !(*link)->next)
 		return ;
-	tmp = (*link)->next;
-	(*link)->next = tmp->next;
-	if ((tmp->next))
-		(tmp->next->prev) = *link;
-	tmp->prev = (*link)->prev;
-	tmp->next = *link;
-	(*link)->prev = tmp;
-	if (tmp->prev)
-		(tmp->prev->next) = tmp;
-	(*link) = tmp;
+	tmp = *link;
+	*link = (*link)->next;
+	(*link)->prev = NULL;
+	while ((*link)->next)
+		*link = (*link)->next;
+/// The while could be more efficient with a tracked end of list..
+	(*link)->next = tmp;
+	tmp->prev = *link;
 }
 
-void	sa(t_link *a)
+void	ra(t_link *a)
 {
-	swap(&a);
-	ft_write(1, "sa\n", 3);
+	rotate(&a);
+	ft_write(1, "ra\n", 3);
 }
 
-void	sb(t_link *b)
+void	rb(t_link *b)
 {
-	swap(&b);
-	ft_write(1, "sb\n", 3);
+	rotate(&b);
+	ft_write(1, "rb\n", 3);
 }
 
-void	ss(t_link *a, t_link *b)
+void	rr(t_link *a, t_link *b)
 {
-	swap(&a);
-	swap(&b);
-	ft_write(1, "ss\n", 3);
+	rotate(&a);
+	rotate(&b);
+	ft_write(1, "rr\n", 3);
 }
