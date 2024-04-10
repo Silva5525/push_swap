@@ -6,13 +6,16 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 11:57:39 by wdegraf           #+#    #+#              #
-#    Updated: 2024/04/04 10:13:17 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/04/08 10:42:24 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 CC		:= cc
-CFLAGS	:= -Wall -Werror -Wextra -Wunreachable-code -Ofast -g -fsanitize=address
+CFLAGS	:= -Wall -Werror -Wextra -Wunreachable-code -Ofast 
+#-g -fsanitize=address
+# valgrind --leak-check=full ./meinProgramm
+
 LIBFT	:= ./libft
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
