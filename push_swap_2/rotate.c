@@ -6,12 +6,16 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 11:51:38 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/10 12:19:11 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/10 12:50:51 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief rotate the list link by using a *tmp holder to store the first
+/// element, move *link to the last element and connect the last element to
+/// the first element.
+/// @param link The list to rotate.
 static void	rotate(t_link **link)
 {
 	t_link	*tmp;

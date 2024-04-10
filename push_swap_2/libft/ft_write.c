@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 10:59:10 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/22 11:13:00 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/10 12:46:46 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ ssize_t	ft_write(int fd, const void *buf, size_t count)
 	bytes_written = write(fd, buf, count);
 	if (bytes_written == -1)
 	{
-		perror("write failed");
 		exit(EXIT_FAILURE);
 	}
 	return (bytes_written);
 }
+
+// not allowed at the moment:
+// perror("write failed");

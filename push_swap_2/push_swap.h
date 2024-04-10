@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/06 12:57:00 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/10 12:53:29 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,26 @@ typedef struct s_link
 }	t_link;
 
 void		error1(char **argv, int err_num);
+
+///###################### Operations ################
+
+///swap.c
+void		sa(t_link *a);
+void		sb(t_link *b);
+void		ss(t_link *a, t_link *b);
+
+///push.c
+void		pa(t_link **a, t_link **b);
+void		pb(t_link **a, t_link **b);
+
+///rotate.c
+void		ra(t_link *a);
+void		rb(t_link *b);
+void		rr(t_link *a, t_link *b);
+
+///reverse_rotate.c
+void		rra(t_link *a);
+void		rrb(t_link *b);
+void		rrr(t_link *a, t_link *b);
 
 #endif
