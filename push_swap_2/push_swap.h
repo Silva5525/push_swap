@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: mahakala <mahakala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/10 12:53:29 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/15 10:40:42 by mahakala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>

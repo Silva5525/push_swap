@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: mahakala <mahakala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:13:01 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/02/20 19:20:37 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/15 10:38:44 by mahakala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ size_t	ft_strlen(const char *s)
 		c++;
 	return (c);
 }
+
+// int array_size = sizeof(numbers) / sizeof(numbers[0]);
 
 // #include <stdio.h>
 // int	main(void)
