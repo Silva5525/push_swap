@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+	
 void	error1(char **argv, int err_num)
 {
 	if (err_num == 1)
@@ -77,21 +77,22 @@ int	main(int argc, char **argv)
 	t_link	*a;
 	t_link	*b;
 
-	a = NULL;
-	b = NULL;
 	if (argc < 2 || !argv[1][0])
 	{
 		ft_write(2, "Error\n Use ./push_swap \"1 2 3 .. \" OR 1 2 3..\n", 47);
 		return (1);
 	}
+	a = NULL;
+	b = NULL;
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	check_stack(&a, argv, argc);
 	if (!sorted(a))
 	{
-		if (a->next == NULL)
+		if (a->next == NULL || a->next->next == NULL)
 			error1(argv, &a, 2)
-		else if (a->next->next == NULL);
+		else if (a->next->next->next == NULL);
+			insertion_sort(&a);
 			
 	}
 	return (0);
