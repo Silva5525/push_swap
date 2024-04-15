@@ -57,9 +57,19 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
 "C_Cpp_Runner.msvcSecureNoWarnings": false,
 "files.associations": {
-	"ft_printf.h": "c",
-	"libft.h": "c",
-	"*.a": "c",
-	"mlx42.h": "c"
-}
+  "ft_printf.h": "c",
+  "libft.h": "c",
+  "*.a": "c",
+  "mlx42.h": "c",
+  "random": "c"
+},
+"python.analysis.extraPaths": [
+  "/home/mahakala/.vscode/extensions/continue.continue-0.0.412-linux-x64"
+],
+"python.autoComplete.extraPaths": [
+  "/home/mahakala/.vscode/extensions/continue.continue-0.0.412-linux-x64"
+],
+"editor.stickyTabStops": false,
+"editor.tabSize": 4,
+"editor.useTabStops": true
 }
