@@ -6,12 +6,15 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 14:23:07 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/15 17:37:54 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 13:56:01 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief the swap function swaps the first two elements of the list
+/// if the list is empty or has only one element, the function returns
+/// @param link the array to swap
 static void	swap(t_link *link)
 {
 	int	tmp;

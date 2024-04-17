@@ -6,47 +6,48 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 11:51:38 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/10 12:50:51 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 12:59:23 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// @brief rotate the list link by using a *tmp holder to store the first
-/// element, move *link to the last element and connect the last element to
+/// @brief rotate the list arr by using a tmp holder to store the first
+/// element, move link to the last element and connect the last element to
 /// the first element.
 /// @param link The list to rotate.
-static void	rotate(t_link **link)
+static void	rotate(t_link *link)
 {
-	t_link	*tmp;
+	int	tmp;
+	int i;
 
-	if (!*link || !(*link)->next)
+	i = 0;
+	if (!link || link->count < 2)
 		return ;
-	tmp = *link;
-	*link = (*link)->next;
-	(*link)->prev = NULL;
-	while ((*link)->next)
-		*link = (*link)->next;
-/// The while could be more efficient with a tracked end of list..
-	(*link)->next = tmp;
-	tmp->prev = *link;
+	tmp = link->arr[0];
+	while (i < link->count - 1)
+	{
+		link->arr[i] = link->arr[i + 1];
+		i++;
+	}
+	link->arr[i] = tmp;
 }
 
 void	ra(t_link *a)
 {
-	rotate(&a);
+	rotate(a);
 	ft_write(1, "ra\n", 3);
 }
 
 void	rb(t_link *b)
 {
-	rotate(&b);
+	rotate(b);
 	ft_write(1, "rb\n", 3);
 }
 
 void	rr(t_link *a, t_link *b)
 {
-	rotate(&a);
-	rotate(&b);
+	rotate(a);
+	rotate(b);
 	ft_write(1, "rr\n", 3);
 }

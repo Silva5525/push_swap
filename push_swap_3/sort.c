@@ -6,12 +6,15 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/04/15 18:59:47 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:00:23 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief checks if the list is sorted in ascending order
+/// @param stack is the struct holder of the stack a and b but it checks only a
+/// @return 1 if the list is sorted, 0 if not
 int	sorted(t_stack *stack)
 {
 	int	i;
@@ -26,6 +29,10 @@ int	sorted(t_stack *stack)
 	return (1);
 }
 
+/// @brief insertion_sort sorts the list by taking the first element and 
+/// comparing it with the next element. If the next element is smaller than
+/// the first element, the next element is inserted at the right position.
+/// @param stack is the struct holder of the stack a and b but it sorts only a
 void	insertion_sort(t_stack *stack)
 {
 	int	i;
@@ -46,4 +53,3 @@ void	insertion_sort(t_stack *stack)
 		i++;
 	}
 }
-
