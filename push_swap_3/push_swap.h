@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/15 18:33:48 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:39:55 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void		sb(t_link *b);
 void		ss(t_link *a, t_link *b);
 
 ///push.c
-void		pa(t_link **a, t_link **b);
-void		pb(t_link **a, t_link **b);
+void		pa(t_link *a, t_link *b);
+void		pb(t_link *a, t_link *b);
 
 ///rotate.c
 void		ra(t_link *a);

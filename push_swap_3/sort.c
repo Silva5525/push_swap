@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/04/17 14:43:57 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:44:34 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,39 @@ int	sorted(t_stack *stack)
 // 	}
 // }
 
+// void	insertion_sort(t_stack *stack)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 1;
+// 	while (i < stack->a->count)
+// 	{
+// 		j = i - 1;
+// 		if (stack->a->arr[1] > stack->a->arr[0])
+// 			pb(stack->a, stack->b);
+// 		else
+// 			sa(stack->a);
+// 		while (j >= 0 && stack->a->arr[1] > stack->a->arr[0])
+// 		{
+// 			pb(stack->a, stack->b);
+// 			j--;
+// 		}
+// 		i++;
+// 	}
+// }
+
 void	insertion_sort(t_stack *stack)
 {
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 1;
-	while (i < stack->a->count)
+	while (stack->a->count > 0)
 	{
-		stack->b->arr[0] = stack->a->arr[i];
+		if (stack->a->arr[1] > stack->a->arr[0])
+			pb(stack->a, stack->b);
+		else
+		{
+			sa(stack->a);
+			pb(stack->a, stack->b);
+		}
+		while ()
 	}
 }

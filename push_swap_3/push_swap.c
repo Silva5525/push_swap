@@ -6,15 +6,15 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:16:59 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/10 13:50:43 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:46:09 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_link **a, t_link **b)
-{
-	t_link	*tmp;
+// void	push_swap(t_link *a, t_link *b)
+// {
+// 	t_link	*tmp;
 
 	
-}
+// }

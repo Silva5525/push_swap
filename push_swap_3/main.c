@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/17 14:43:25 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:50:01 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,12 @@ int	main(int argc, char **argv)
 	while (i < stack->a->count)
 	{
 		printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
+		i++;
+	}
+	i = 0;
+	while (i < stack->b->count)
+	{
+		printf("stack->b->arr[%d]: %d\n", i, stack->b->arr[i]);
 		i++;
 	}
 	free_iter(stack);

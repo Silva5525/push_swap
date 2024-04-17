@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:45:30 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/17 14:50:15 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/17 15:55:15 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,24 @@
 
 static	void	push(t_link *dst, t_link *src)
 {
+	int	i;
+
+	i = 0;
 	if (!src || src->count < 1)
 		return ;
-	dst->arr[dst->count] = src->arr[0];
+	i = dst->count;
+	while (i > 0)
+	{
+		dst->arr[i] = dst->arr[i - 1];
+		i--;
+	}
+	dst->arr[0] = src->arr[0];
 	dst->count++;
+	while (i < src->count - 1)
+	{
+		src->arr[i] = src->arr[i + 1];
+		i++;
+	}
 	src->count--;
 }
 

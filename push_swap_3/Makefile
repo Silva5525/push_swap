@@ -6,23 +6,23 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 11:57:39 by wdegraf           #+#    #+#              #
-#    Updated: 2024/04/15 17:30:47 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/04/17 15:45:39 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 CC		:= cc
-CFLAGS	:= -Wall -Werror -Wextra -Wunreachable-code -Ofast 
-#-g -fsanitize=address
+CFLAGS	:= -Wall -Werror -Wextra -Wunreachable-code -Ofast -g -fsanitize=address
 # valgrind --leak-check=full ./meinProgramm
 
 LIBFT	:= ./libft
 
-HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
+HEADERS	:= -I ./include -I $(LIBFT)
 
 LIBS	:= -L$(LIBFT) -lft
 
-SRCS	:= main.c error.c sort.c swap.c
+SRCS	:= main.c error.c sort.c swap.c push.c rotate.c reverse_rotate.c \
+			push_swap.c utils.c
 # SRCS	:= main.c exit_manager.c first_utils.c push_swap.c push.c rotation.c \
 # 			reverse_rotation.c sort.c swap.c
 OBJS	:= ${SRCS:.c=.o}
@@ -40,7 +40,6 @@ $(NAME): $(OBJS)
 	
 clean:
 	@rm -rf $(OBJS)
-	@rm -rf $(LIBMLX)/build
 	@make -C $(LIBFT) clean
 
 fclean: clean
