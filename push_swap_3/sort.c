@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/04/17 17:44:34 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:53:40 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	sorted(t_stack *stack)
 	return (1);
 }
 
-/// @brief insertion_sort sorts the list by taking the first element and 
-/// comparing it with the next element. If the next element is smaller than
-/// the first element, the next element is inserted at the right position.
-/// @param stack is the struct holder of the stack a and b but it sorts only a
+//// @brief insertion_sort sorts the list by taking the first element and 
+//// comparing it with the next element. If the next element is smaller than
+//// the first element, the next element is inserted at the right position.
+//// @param stack is the struct holder of the stack a and b but it sorts only a
 // void	insertion_sort(t_stack *stack)
 // {
 // 	int	i;
@@ -78,15 +78,25 @@ int	sorted(t_stack *stack)
 
 void	insertion_sort(t_stack *stack)
 {
-	while (stack->a->count > 0)
+	while (!sorted(stack))
 	{
-		if (stack->a->arr[1] > stack->a->arr[0])
-			pb(stack->a, stack->b);
-		else
+		
+		while (stack->a->count > 1)
 		{
-			sa(stack->a);
-			pb(stack->a, stack->b);
+			if (stack->a->arr[0] > stack->a->arr[stack->a->count - 1]
+				&& stack->a->arr[0] > stack->a->arr[1])
+				pb(stack->a, stack->b);
+			else if (stack->a->arr[0] > stack->a->arr[stack->a->count - 1])
+				ra(stack->a);
+			else if (stack->a->arr[0] > stack->a->arr[1])
+				sa(stack->a);
+			else
+				rra(stack->a);
 		}
-		while ()
 	}
+}
+
+int	max(t_link *a)
+{
+	
 }

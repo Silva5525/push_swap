@@ -6,20 +6,18 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 11:51:38 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/17 12:59:23 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/18 14:20:08 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// @brief rotate the list arr by using a tmp holder to store the first
-/// element, move link to the last element and connect the last element to
-/// the first element.
+/// @brief rotate first and last element of the list
 /// @param link The list to rotate.
 static void	rotate(t_link *link)
 {
 	int	tmp;
-	int i;
+	int	i;
 
 	i = 0;
 	if (!link || link->count < 2)

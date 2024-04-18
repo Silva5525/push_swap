@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/17 15:50:01 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/18 13:48:05 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ void	char_to_int(char **argv, t_stack *stack)
 	stack->a->arr = malloc(sizeof(int) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
+		stack->b->arr = malloc(sizeof(int) * count);
+	if (!stack->b->arr)
+		error3(stack, 0);
+	stack->b->count = 0;
 	while (i < count)
 	{
 		stack->a->arr[i - 1] = ft_atoi(argv[i]);
