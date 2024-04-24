@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/19 22:14:11 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/24 15:39:35 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		insertion_sort(t_stack *stack);
 void		sort_3(t_stack *stack);
 
 /// push_swap.c
-void 		big_push_swap(t_stack stack);
+void 		push_swap(t_stack stack);
 
 ///###################### Operations ################
 

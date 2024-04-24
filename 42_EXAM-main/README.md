@@ -1,4 +1,4 @@
-# 42_EXAM v2 🎓
+# 42_EXAM v2 🎓 ####### bash -c "$(curl https://grademe.fr)"
  ## All 42 exams auto-correct, to practice.
  ## ExamRank02, 03, 04, 05, 06 & PiscineExam
   ##   👉  42_EXAM is now part of **[GRADEME.FR](https://grademe.fr)** 😎

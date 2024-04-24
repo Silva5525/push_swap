@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/04/24 15:31:31 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/24 15:36:41 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ void	insertion_sort1(t_stack *stack)
 // 	}
 // }
 
+/// @brief makes a copy of the stack a and sorts it to find the max,
+/// mid and min values. the map contains the pre sorted stack a.
+/// @param stack the stack holder
 void	map(t_stack *stack)
 {
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:45:30 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/18 14:58:50 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/24 16:06:42 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ static	void	push(t_link *dst, t_link *src)
 	src->count--;
 }
 
+/// @brief pushes the first element of stack b to stack a
+/// @param a the stack a
+/// @param b the stack b
 void	pa(t_link *a, t_link *b)
 {
 	push(a, b);
 	ft_write(1, "pa\n", 3);
 }
 
+/// @brief pushes the first element of stack a to stack b
+/// @param a the stack a
+/// @param b the stack b
 void	pb(t_link *a, t_link *b)
 {
 	push(b, a);

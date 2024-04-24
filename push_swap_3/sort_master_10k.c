@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:11:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/23 14:15:55 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/24 16:05:18 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ void	sort_master(stack);
 	}
 }
 
-void	big_push(t_stack *stack)
+void	big_push_swap(t_stack *stack)
 {
 	if (stack->a->count >= 7 && !sorted(stack->a))
 	{
 		
 		if (stack->a->count >= 6)
-			pa(stack->a, stack->b);
+			pb(stack->a, stack->b);
 		if (stack->a->count >= 5)
-			pa(stack->a, stack->b);
+			pb(stack->a, stack->b);
 		if (stack->a->count >= 4)
 			sort_master(stack);
 	}
