@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/18 13:48:05 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/19 21:30:18 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ void	str_c_to_int(char *argv, t_stack *stack)
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
+	stack->map->arr = malloc(sizeof(int) * count);
+	if (!stack->map->arr)
+		error3(stack, 0);
+	stack->map->count = 0;
 	while (i < count)
 	{
 		stack->a->arr[i] = ft_atoi(numbers[i]);
@@ -74,10 +78,14 @@ void	char_to_int(char **argv, t_stack *stack)
 	stack->a->arr = malloc(sizeof(int) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
-		stack->b->arr = malloc(sizeof(int) * count);
+	stack->b->arr = malloc(sizeof(int) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
+	stack->map->arr = malloc(sizeof(int) * count);
+	if (!stack->map->arr)
+		error3(stack, 0);
+	stack->map->count = 0;
 	while (i < count)
 	{
 		stack->a->arr[i - 1] = ft_atoi(argv[i]);
@@ -97,6 +105,10 @@ void	init_stack(t_stack **stack)
 	(*stack)->b = malloc(sizeof(t_link));
 	if (!(*stack)->b)
 		error3(*stack, 0);
+	(*stack)->map = malloc(sizeof(t_link));
+	if (!(*stack)->map)
+		error3(*stack, 0);
+	
 }
 
 int	main(int argc, char **argv)
@@ -105,6 +117,7 @@ int	main(int argc, char **argv)
 	int		i;
 
 	i = 0;
+	stack = NULL;
 	if (argc < 2 || !argv[1][0])
 		error0(-1);
 	init_stack(&stack);
@@ -119,16 +132,19 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	i = 0;
-	if (!sorted(stack))
+	if (!sorted(stack->a))
 	{
-		if (stack->a->count == 2)
-			sa(stack->a);
-		else if (stack->a->count < 32)
-			insertion_sort(stack);
+		if (stack->a->count <= 3)
+			sort_3(stack);
+		// else
+			// big_push_swap(stack);
+		// else if (stack->a->count < 32)
+		// 	insertion_sort(stack);
 		// else
 		// 	tim_sort(stack);
 	}
 	printf("stack->a->count: %d\n", stack->a->count);
+	i = 0;
 	while (i < stack->a->count)
 	{
 		printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
@@ -138,6 +154,12 @@ int	main(int argc, char **argv)
 	while (i < stack->b->count)
 	{
 		printf("stack->b->arr[%d]: %d\n", i, stack->b->arr[i]);
+		i++;
+	}
+	i = 0;
+	while (i < stack->map->count)
+	{
+		printf("stack->map->arr[%d]: %d\n", i, stack->map->arr[i]);
 		i++;
 	}
 	free_iter(stack);

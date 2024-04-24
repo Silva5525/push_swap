@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:22:25 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/15 16:52:04 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/19 11:11:41 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	free_iter(t_stack *stack)
 {
-	int		i;
-
-	i = 0;
 	if (stack->a->arr != NULL)
 	{
 		free(stack->a->arr);
@@ -28,6 +25,12 @@ void	free_iter(t_stack *stack)
 		free(stack->b->arr);
 		stack->b->arr = NULL;
 		free(stack->b);
+	}
+	if (stack->map->arr != NULL)
+	{
+		free(stack->map->arr);
+		stack->map->arr = NULL;
+		free(stack->map);
 	}
 	free(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/18 14:35:48 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/19 22:14:11 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct s_link
 {
 	int				*arr;
 	int				count;
+	int				max;
+	int				mid;
+	int				min;
 	// int				num;
 	// int				*next;
 	// int				*actual;
@@ -34,7 +37,11 @@ typedef struct s_stacks
 {
 	t_link	*a;
 	t_link	*b;
+	t_link	*map;
 }	t_stack;
+
+/// sort_master_10k.c
+void 		big_push(t_stack stack);
 
 /// error.c
 void		error0(int err_num);
@@ -44,8 +51,12 @@ void		error3(t_stack *stack, int err_num);
 void		free_iter(t_stack *stack);
 
 /// sort.c
-int		sorted(t_stack *stack);
-void	insertion_sort(t_stack *stack);
+int			sorted(t_link *stack);
+void		insertion_sort(t_stack *stack);
+void		sort_3(t_stack *stack);
+
+/// push_swap.c
+void 		big_push_swap(t_stack stack);
 
 ///###################### Operations ################
 
