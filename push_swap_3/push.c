@@ -6,12 +6,15 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:45:30 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/24 16:06:42 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/24 16:24:52 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief pushes the first element of stack src to stack dst
+/// @param dst destination stack
+/// @param src source stack
 static	void	push(t_link *dst, t_link *src)
 {
 	int	i;

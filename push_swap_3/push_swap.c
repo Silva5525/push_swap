@@ -6,13 +6,11 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:16:59 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/19 18:24:28 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/24 19:51:35 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 // void big_push_swap(t_stack stack)
 // {

@@ -6,11 +6,39 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/04/24 15:36:41 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/25 21:01:34 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rotations_b(t_stack *stack)
+{
+	find_min(stack->b);
+	while (stack->b->arr[0] != stack->b->min)
+	{
+		printf("b");
+		if (stack->b->midle)
+			ra(stack->b);
+		else
+			rra(stack->b);
+		init(stack);
+	}
+}
+
+void	rotations_a(t_stack *stack)
+{
+	stack->a->min = get_nearest(stack->b);
+	while (stack->a->arr[0] != stack->a->min)
+	{
+		printf("rotate arr[0] = %d\n min = %d\n", stack->a->arr[0], stack->b->min);
+		if (stack->a->midle)
+			ra(stack->a);
+		else
+			rra(stack->a);
+		init(stack);
+	}
+}
 
 /// @brief checks if the list is sorted in ascending order
 /// @param stack is the struct holder of the stack a and b but it checks only a
@@ -33,12 +61,6 @@ int	sorted(t_link *stack)
 /// @param stack the holder of the stack.
 void	sort_3(t_stack *stack)
 {
-	if (stack->a->count == 2)
-	{
-		if (stack->a->arr[0] > stack->a->arr[1])
-			sa(stack->a);
-		return ;
-	}
 	if (stack->a->arr[1] < stack->a->arr[0]
 		&& stack->a->arr[2] < stack->a->arr[0])
 		ra(stack->a);
@@ -115,9 +137,6 @@ void	map(t_stack *stack)
 	stack->map->min = stack->map->arr[0];
 	i = stack->map->count / 2;
 	stack->map->mid = stack->map->arr[i];
-	printf("max[%d] = %d\n", i, stack->map->max);
-	printf("mid[%d] = %d\n", i, stack->map->mid);
-	printf("min[%d] = %d\n", i, stack->map->min);
 }
 
 // void	insertion_sort(t_stack *stack)

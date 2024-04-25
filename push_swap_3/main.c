@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/19 21:30:18 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/25 17:17:33 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	init_stack(t_stack **stack)
 	(*stack)->map = malloc(sizeof(t_link));
 	if (!(*stack)->map)
 		error3(*stack, 0);
-	
 }
 
 int	main(int argc, char **argv)
@@ -134,11 +133,18 @@ int	main(int argc, char **argv)
 	i = 0;
 	if (!sorted(stack->a))
 	{
-		if (stack->a->count <= 3)
+		init_int(stack);
+		map(stack);
+		if (stack->a->count == 2)
+		{
+			if (stack->a->arr[0] > stack->a->arr[1])
+				sa(stack->a);
+		}
+		else if (stack->a->count <= 3)
 			sort_3(stack);
-		// else
-			// big_push_swap(stack);
-		// else if (stack->a->count < 32)
+		else if (stack->a->count <= 7)
+			big_push_swap(stack);
+		// else if (stack->a->count > 7)
 		// 	insertion_sort(stack);
 		// else
 		// 	tim_sort(stack);

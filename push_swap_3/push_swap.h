@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/24 15:39:35 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/25 21:03:12 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdbool.h>
 # include <limits.h>
 
+
+
 typedef struct s_link
 {
 	int				*arr;
@@ -26,6 +28,11 @@ typedef struct s_link
 	int				max;
 	int				mid;
 	int				min;
+	int				*pos;
+	int				*distance;
+	int				*goal;
+	bool			*nearest;
+	bool			*midle;
 	// int				num;
 	// int				*next;
 	// int				*actual;
@@ -41,7 +48,14 @@ typedef struct s_stacks
 }	t_stack;
 
 /// sort_master_10k.c
-void 		big_push(t_stack stack);
+void		big_push_swap(t_stack *stack);
+int			get_nearest(t_link *stack);
+
+/// utils.c
+int			find_min(t_link *stack);
+void		init(t_stack *stack);
+void		map(t_stack *stack);
+void		init_int(t_stack *stack);
 
 /// error.c
 void		error0(int err_num);
@@ -51,8 +65,10 @@ void		error3(t_stack *stack, int err_num);
 void		free_iter(t_stack *stack);
 
 /// sort.c
+void		rotations_a(t_stack *stack);
+void		rotations_b(t_stack *stack);
 int			sorted(t_link *stack);
-void		insertion_sort(t_stack *stack);
+void		insertion_sort1(t_stack *stack);
 void		sort_3(t_stack *stack);
 
 /// push_swap.c
