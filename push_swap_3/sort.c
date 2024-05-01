@@ -6,39 +6,92 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/04/25 21:01:34 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/27 19:52:18 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// is not correct
 void	rotations_b(t_stack *stack)
 {
-	find_min(stack->b);
+	int min;
+	
+	min = get_nearest(stack->b);
 	while (stack->b->arr[0] != stack->b->min)
 	{
-		printf("b");
-		if (stack->b->midle)
-			ra(stack->b);
+		if (min < stack->b->count / 2)
+			rb(stack->b);
 		else
-			rra(stack->b);
+			rrb(stack->b);
 		init(stack);
 	}
 }
 
+
+/// 
 void	rotations_a(t_stack *stack)
 {
-	stack->a->min = get_nearest(stack->b);
-	while (stack->a->arr[0] != stack->a->min)
+	int min;
+	
+	min = get_nearest(stack->b);
+	while (stack->a->arr[0] != min)
 	{
-		printf("rotate arr[0] = %d\n min = %d\n", stack->a->arr[0], stack->b->min);
 		if (stack->a->midle)
 			ra(stack->a);
 		else
 			rra(stack->a);
-		init(stack);
+		// init(stack);
 	}
 }
+
+void	rotations_a6(t_stack *stack)
+{
+	int min_pos;
+	bool med;
+	int hold;
+	
+	init(stack);
+	min_pos = find_min(stack->a);
+	hold = stack->a->arr[min_pos];
+	med = (min_pos < (stack->a->count / 2));
+	while (stack->a->arr[0] != hold)
+	{
+		if (med)
+			ra(stack->a);
+		else
+			rra(stack->a);
+		
+	}
+	// error3(stack, 0);
+}
+
+// /// is not correct
+// void	rotations_a(t_stack *stack)
+// {
+// 	int hold;
+// 	int min;
+	
+// 	init(stack);
+// 	min = get_nearest(stack->b);
+// 	hold = min;
+// 	printf("hold = %d\n", min);
+// 	while (stack->a->arr[0] != hold)
+// 	{
+// 		printf("hold = %d\n", min);
+// 		printf("b->goal[hold] = %d\n", stack->b->goal[hold]);
+// 		printf("b->midle[hold] = %d\n", stack->b->midle[hold]);
+// 		printf("a->distance[hold] = %d\n", stack->b->distance[hold]);
+// 		printf("a->pos[hold] = %d\n", stack->b->pos[hold]);
+// 		printf("b->nearest[hold] = %d\n", stack->b->nearest[hold]);	
+// 		printf("rotate arr[0] = %d\n min a = %d\n", stack->b->arr[0], hold);
+// 		if (stack->a->midle[hold])
+// 			ra(stack->a);
+// 		else
+// 			rra(stack->a);
+// 		init(stack);
+// 	}
+// }
 
 /// @brief checks if the list is sorted in ascending order
 /// @param stack is the struct holder of the stack a and b but it checks only a

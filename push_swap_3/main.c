@@ -6,16 +6,16 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/25 17:17:33 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/26 15:57:05 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_stack(t_stack *stack)
+void check_stack(t_stack *stack)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
 
 	j = 0;
 	i = 0;
@@ -32,11 +32,11 @@ void	check_stack(t_stack *stack)
 	}
 }
 
-void	str_c_to_int(char *argv, t_stack *stack)
+void str_c_to_int(char *argv, t_stack *stack)
 {
-	char	**numbers;
-	int		i;
-	int		count;
+	char **numbers;
+	int i;
+	int count;
 
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
@@ -66,10 +66,10 @@ void	str_c_to_int(char *argv, t_stack *stack)
 	free(numbers);
 }
 
-void	char_to_int(char **argv, t_stack *stack)
+void char_to_int(char **argv, t_stack *stack)
 {
-	int		i;
-	int		count;
+	int i;
+	int count;
 
 	i = 1;
 	count = 1;
@@ -94,7 +94,7 @@ void	char_to_int(char **argv, t_stack *stack)
 	stack->a->count = count - 1;
 }
 
-void	init_stack(t_stack **stack)
+void init_stack(t_stack **stack)
 {
 	*stack = malloc(sizeof(t_stack));
 	if (!*stack)
@@ -110,10 +110,10 @@ void	init_stack(t_stack **stack)
 		error3(*stack, 0);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_stack	*stack;
-	int		i;
+	t_stack *stack;
+	int i;
 
 	i = 0;
 	stack = NULL;
@@ -131,16 +131,17 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	i = 0;
+	init_int(stack);
+	init(stack);
 	if (!sorted(stack->a))
 	{
-		init_int(stack);
 		map(stack);
 		if (stack->a->count == 2)
 		{
 			if (stack->a->arr[0] > stack->a->arr[1])
 				sa(stack->a);
 		}
-		else if (stack->a->count <= 3)
+		else if (stack->a->count == 3)
 			sort_3(stack);
 		else if (stack->a->count <= 7)
 			big_push_swap(stack);
@@ -172,12 +173,12 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-	// if (!sorted(stack))
-	// {
-	// 	if (stack->a->next == NULL || a->next->next == NULL)
-	// 		error3(stack, 11);
-	// 	else if (a->next->next->next == NULL)
-	// 		insertion_sort(stack);
-	// 	else
-	// 		tim_sort();
-	// }
+// if (!sorted(stack))
+// {
+// 	if (stack->a->next == NULL || a->next->next == NULL)
+// 		error3(stack, 11);
+// 	else if (a->next->next->next == NULL)
+// 		insertion_sort(stack);
+// 	else
+// 		tim_sort();
+// }

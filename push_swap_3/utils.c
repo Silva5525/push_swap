@@ -6,27 +6,26 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 13:10:58 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/25 19:14:29 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/04/27 19:53:04 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// @brief finds the position of the smallest element in the stack
-/// @param stack holder of the stack
-/// @return the position of the smallest element
+/// @brief finds the position of the smallest element in the stack and saves it in stack->min
+/// @param stack->min the smallest int in the stack
+/// @return @param position of the smallest element
 int	find_min(t_link *stack)
 {
 	int	i;
-	int	min;
 	int	position;
 
 	i = 0;
-	min = INT_MAX;
+	stack->min = INT_MAX;
 	position = 0;
 	while (i < stack->count)
 	{
-		if (stack->arr[i] < min)
+		if (stack->arr[i] < stack->min)
 		{
 			stack->min = stack->arr[i];
 			position = i;
@@ -36,9 +35,13 @@ int	find_min(t_link *stack)
 	return (position);
 }
 
-/// @brief gives evry b element a position in the a stack 
-/// @param a stack a
-/// @param b stack b
+/// @brief it finds the smallest element in a that is still larger than 
+/// the given element in b  
+/// @param a stack a /// not used
+/// @param b->goal[i] is the smallest element in a that is still 
+/// larger than the given element in b
+/// the finish position of the element in stack a
+/// if not foundsets the goal to the position of the smallest element in a
 static void give_position(t_link *a, t_link *b)
 {
 	int		position;
@@ -70,27 +73,27 @@ static void give_position(t_link *a, t_link *b)
 
 /// @brief checks the position of the elements in the stack and sets under
 /// the midle of the stack to true and the above to false
-/// @param stack holder of the stack
+/// @param stack->pos[i] the position of the elements in the stack
+/// @param stack->midle[i] true or false if the element is under or above the midle
 void	check_position(t_link *stack)
 {
 	int	i;
-
+	int midle;
+	
+	midle = stack->count / 2;
 	i = 0;
 	while (i < stack->count)
 	{
 		stack->pos[i] = i;
-		if (i <= stack->count / 2)
-			stack->midle[i] = true;
-		else
-			stack->midle[i] = false;
+		stack->midle[i] = (i < midle);
 		i++;
 	}
 }
 
 /// @brief sets the distance of the elements in the stack between the goal
 /// and the element which will be pushed
-/// @param a stack a
-/// @param b stack b
+/// @param a stack a /// not used
+/// @param b->distance the distance of the element to the goal
 void	count_distance(t_link *a, t_link *b)
 {
 	int	i;
@@ -109,8 +112,9 @@ void	count_distance(t_link *a, t_link *b)
 	}
 }
 
-/// @brief gives the nearest element for the b stack to push
-/// @param b the b stack
+/// @brief gives the nearest element for the b stack to push it checks the lowest b->distance
+/// @param b->nearest[i] is true if the element is the nearest all other are false
+/// @param a stack a /// not used
 void	give_nearest(t_link *b)
 {
 	int best;
@@ -140,6 +144,8 @@ void	give_nearest(t_link *b)
 	}
 }
 
+/// @brief mallocs the needed memory for the sorting values
+/// @param stack 
 void	init_int(t_stack *stack)
 {
 	int count;
@@ -177,6 +183,8 @@ void	init_int(t_stack *stack)
 		error3(stack, 0);
 }
 
+/// @brief initializes the values needet for sorting
+/// @param stack holder of the stack
 void	init(t_stack *stack)
 {
 	check_position(stack->a);
