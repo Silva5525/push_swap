@@ -6,12 +6,14 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:11:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/27 19:26:15 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/01 18:51:57 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief returns the position of the nearest element in the stack given
+/// @param stack the t_link element which is a or b
 int get_nearest(t_link *stack)
 {
 	int i;
@@ -62,33 +64,48 @@ void	push_sort(t_stack *stack)
 	pa(stack->a, stack->b);
 }
 
-/// is not done jet
-void	big_push_swap(t_stack *stack)
+/// @brief sorts stack if it has between 3 and 7 elements
+/// @param stack holds the stacks a and b
+void	push_swap_7(t_stack *stack)
 {
 	insertion_sort1(stack);
-	if (stack->a->count <= 6 && !sorted(stack->a))
+	if (stack->a->count <= 7 && !sorted(stack->a))
 	{
 		while (stack->a->count > 3)
-		{
-			init(stack);
-			rotations_a6(stack);
-			pb(stack->a, stack->b);
-		}
+			rotations_7(stack);
 	}
-	else
+	sort_3(stack);
+	while (stack->b->count > 0)
+		pa(stack->a, stack->b);	
+}
+
+/// @brief sorts the stack if it has more than 7 elements
+/// @param stack holds the stacks a and b 
+void 	push_swap(t_stack *stack)
+{
+	int half;
+	
+	insertion_sort1(stack);
+	if (!sorted(stack->a))
 	{
-		while (stack->a->count >= 4)
+		while (stack->a->count > 3)
 			pb(stack->a, stack->b);
 	}
 	sort_3(stack);
 	while (stack->b->count > 0)
 	{
-		init(stack);
-		push_sort(stack);	
+		push_sort(stack);
 	}
-	// check_position(stack->a);
-	// stack->a->min = find_min(stack->a);
-	// if (stack->a->min )
-		// rotations_a(stack);
-	// printf("a min: %d\n", stack->a->min);
+	init(stack);
+	half = min_i(stack->a);
+	if (half < stack->a->count / 2)
+	{
+		while (stack->a->arr[0] != stack->a->arr[half])
+			ra(stack->a);
+	}
+	else
+	{
+		while (stack->a->arr[0] != stack->a->arr[half])
+			rra(stack->a);
+	}
 }

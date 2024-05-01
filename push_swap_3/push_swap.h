@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/27 00:57:59 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/01 16:27:54 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ typedef struct s_stacks
 }	t_stack;
 
 /// sort_master_10k.c
-void		big_push_swap(t_stack *stack);
+void		push_swap_7(t_stack *stack);
 int			get_nearest(t_link *stack);
 
 /// utils.c
-int			find_min(t_link *stack);
+int			min_i(t_link *stack);
 void		init(t_stack *stack);
 void		map(t_stack *stack);
 void		init_int(t_stack *stack);
@@ -92,10 +92,10 @@ void		rotations_b(t_stack *stack);
 int			sorted(t_link *stack);
 void		insertion_sort1(t_stack *stack);
 void		sort_3(t_stack *stack);
-void		rotations_a6(t_stack *stack);
+void		rotations_7(t_stack *stack);
 
 /// push_swap.c
-void 		push_swap(t_stack stack);
+void 		push_swap(t_stack *stack);
 
 ///###################### Operations ################
 

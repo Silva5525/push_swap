@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 13:10:58 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/27 19:53:04 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/01 19:57:23 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief finds the position of the smallest element in the stack and saves it in stack->min
 /// @param stack->min the smallest int in the stack
 /// @return @param position of the smallest element
-int	find_min(t_link *stack)
+int	min_i(t_link *stack)
 {
 	int	i;
 	int	position;
@@ -66,7 +66,7 @@ static void give_position(t_link *a, t_link *b)
 		if (INT_MAX != big)
 			b->goal[i] = position;
 		else
-			b->goal[i] = find_min(a);
+			b->goal[i] = min_i(a);
 		i++;
 	}
 }
@@ -136,16 +136,18 @@ void	give_nearest(t_link *b)
 	i = 0;
 	while (i < b->count)
 	{
+		printf("b->distance[i] = %d\n", b->distance[i]);
 		if (b->distance[i] == best)
 			b->nearest[i] = true;
 		else
 			b->nearest[i] = false;
+		printf("b->nearest[i] = %d\n", b->nearest[i]);
 		i++;
 	}
 }
 
 /// @brief mallocs the needed memory for the sorting values
-/// @param stack 
+/// @param stack holds the stacks a and b
 void	init_int(t_stack *stack)
 {
 	int count;

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/26 15:57:05 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/01 16:15:37 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,9 @@ int main(int argc, char **argv)
 		else if (stack->a->count == 3)
 			sort_3(stack);
 		else if (stack->a->count <= 7)
-			big_push_swap(stack);
-		// else if (stack->a->count > 7)
-		// 	insertion_sort(stack);
+			push_swap_7(stack);
+		else if (stack->a->count > 7)
+			push_swap(stack);
 		// else
 		// 	tim_sort(stack);
 	}

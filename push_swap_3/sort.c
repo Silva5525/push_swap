@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/04/27 19:52:18 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/01 18:44:01 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	rotations_b(t_stack *stack)
 	}
 }
 
-
 /// 
 void	rotations_a(t_stack *stack)
 {
@@ -41,30 +40,31 @@ void	rotations_a(t_stack *stack)
 			ra(stack->a);
 		else
 			rra(stack->a);
-		// init(stack);
 	}
 }
 
-void	rotations_a6(t_stack *stack)
+/// @brief rotates the stack a to the smallest element in the stack a.
+/// Up if the smallest is in uper half and down if the smallest is in the lower half
+/// @param stack the holder of the stack a and b
+void	rotations_7(t_stack *stack)
 {
 	int min_pos;
-	bool med;
-	int hold;
+	int target;
 	
 	init(stack);
-	min_pos = find_min(stack->a);
-	hold = stack->a->arr[min_pos];
-	med = (min_pos < (stack->a->count / 2));
-	while (stack->a->arr[0] != hold)
+	min_pos = min_i(stack->a);
+	target = stack->a->arr[min_pos];
+	while (stack->a->arr[0] != target)
 	{
-		if (med)
+		if (min_pos < (stack->a->count / 2))
 			ra(stack->a);
 		else
 			rra(stack->a);
 		
 	}
-	// error3(stack, 0);
+	pb(stack->a, stack->b);
 }
+
 
 // /// is not correct
 // void	rotations_a(t_stack *stack)
