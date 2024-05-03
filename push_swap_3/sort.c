@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/05/01 18:44:01 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/03 16:45:12 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,43 @@
 /// is not correct
 void	rotations_b(t_stack *stack)
 {
-	int min;
+	int near_pos;
+	int target;
 	
-	min = get_nearest(stack->b);
-	while (stack->b->arr[0] != stack->b->min)
+	near_pos = get_nearest(stack->b);
+	target = stack->b->arr[near_pos];
+	while (stack->b->arr[0] != target)
 	{
-		if (min < stack->b->count / 2)
+		if (near_pos < (stack->a->count / 2))
 			rb(stack->b);
 		else
 			rrb(stack->b);
-		init(stack);
 	}
 }
 
 /// 
 void	rotations_a(t_stack *stack)
 {
-	int min;
+	int near_pos;
+	int goal;
+	int target;
 	
-	min = get_nearest(stack->b);
-	while (stack->a->arr[0] != min)
+	near_pos = get_nearest(stack->b);
+	goal = stack->b->goal[near_pos];
+	target = stack->a->arr[goal];
+	// printf("goal = %d\n", goal);
+	// printf("near_pos = %d\n", near_pos);
+	// printf("target = %d\n", target);
+	while (stack->a->arr[0] != target)
 	{
-		if (stack->a->midle)
+		// printf("test = %d\n", target);
+		if (near_pos < (stack->a->count / 2))
 			ra(stack->a);
 		else
 			rra(stack->a);
 	}
+	// printf("arr[0] = %d\n", stack->a->arr[0]);
+	// printf("goal = %d\n", goal);
 }
 
 /// @brief rotates the stack a to the smallest element in the stack a.
@@ -56,6 +67,7 @@ void	rotations_7(t_stack *stack)
 	target = stack->a->arr[min_pos];
 	while (stack->a->arr[0] != target)
 	{
+		printf("rotation7 = %d\n", target);
 		if (min_pos < (stack->a->count / 2))
 			ra(stack->a);
 		else
@@ -114,7 +126,7 @@ int	sorted(t_link *stack)
 /// @param stack the holder of the stack.
 void	sort_3(t_stack *stack)
 {
-	if (stack->a->arr[1] < stack->a->arr[0]
+		if (stack->a->arr[1] < stack->a->arr[0]
 		&& stack->a->arr[2] < stack->a->arr[0])
 		ra(stack->a);
 	else if (stack->a->arr[1] > stack->a->arr[0]

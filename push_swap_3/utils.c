@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 13:10:58 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/01 19:57:23 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/03 16:32:45 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	check_position(t_link *stack)
 	{
 		stack->pos[i] = i;
 		stack->midle[i] = (i < midle);
+		// printf("stack->midle[i] = %d\n", stack->midle[i]);
 		i++;
 	}
 }
@@ -97,19 +98,27 @@ void	check_position(t_link *stack)
 void	count_distance(t_link *a, t_link *b)
 {
 	int	i;
-
+	// printf("count distance\n");
 	i = 0;
 	while (i < b->count)
 	{
 		b->distance[i] = b->pos[i];
 		if (!b->midle[i])
 			b->distance[i] = b->count - b->pos[i];
+		// printf("b->distance[i] = %d\n", b->distance[i]);
 		if (b->goal[i] <= a->count / 2)
+		{
 			b->distance[i] += b->goal[i];
+		// printf("b->goal[i] = %d\n", b->goal[i]);
+		// printf("b->distance[i] = %d\n", b->distance[i]);
+		}
 		else
 			b->distance[i] += a->count - b->goal[i]; /// check if goal b and a are correct in if else
+		// printf("b->goal[i] = %d\n", b->goal[i]);
+		// printf("b->distance[i] = %d\n", b->distance[i]);
 		i++;
 	}
+	// printf("count distance end\n");
 }
 
 /// @brief gives the nearest element for the b stack to push it checks the lowest b->distance
@@ -136,12 +145,12 @@ void	give_nearest(t_link *b)
 	i = 0;
 	while (i < b->count)
 	{
-		printf("b->distance[i] = %d\n", b->distance[i]);
+		// printf("b->distance[i] = %d\n", b->distance[i]);
 		if (b->distance[i] == best)
 			b->nearest[i] = true;
 		else
 			b->nearest[i] = false;
-		printf("b->nearest[i] = %d\n", b->nearest[i]);
+		// printf("b->nearest[i] = %d\n", b->nearest[i]);
 		i++;
 	}
 }
@@ -189,7 +198,9 @@ void	init_int(t_stack *stack)
 /// @param stack holder of the stack
 void	init(t_stack *stack)
 {
+	// printf("a\n");
 	check_position(stack->a);
+	// printf("b\n");
 	check_position(stack->b);
 	give_position(stack->a, stack->b);
 	count_distance(stack->a, stack->b);
