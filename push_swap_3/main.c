@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/11 14:02:03 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 20:02:10 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	str_c_to_int(char *argv, t_stack *stack)
 			error1(numbers, 8);
 		count++;
 	}
-	stack->a->arr = malloc(sizeof(int) * count);
+	stack->a->arr = malloc((sizeof(int) + 1) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
 	stack->a->count = count;
-	stack->b->arr = malloc(sizeof(int) * count);
+	stack->b->arr = malloc((sizeof(int) + 1) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
@@ -66,10 +66,10 @@ void	char_to_int(char **argv, t_stack *stack)
 			error1(argv, 8);
 		count++;
 	}
-	stack->a->arr = malloc(sizeof(int) * count);
+	stack->a->arr = malloc((sizeof(int) + 1) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
-	stack->b->arr = malloc(sizeof(int) * count);
+	stack->b->arr = malloc((sizeof(int) + 1) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;

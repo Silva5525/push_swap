@@ -6,13 +6,13 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 11:57:39 by wdegraf           #+#    #+#              #
-#    Updated: 2024/05/11 17:44:51 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/05/11 22:30:42 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 CC		:= cc
-CFLAGS	:= -Wall -Werror -Wextra 
+CFLAGS	:= -Wall -Werror -Wextra -g
 #-Wunreachable-code
 #-g -fsanitize=address -Ofast 
 # valgrind --leak-check=full ./meinProgramm
