@@ -6,13 +6,14 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 11:57:39 by wdegraf           #+#    #+#              #
-#    Updated: 2024/05/11 12:43:15 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/05/11 17:44:51 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 CC		:= cc
-CFLAGS	:= -Wall -Werror -Wextra -Wunreachable-code
+CFLAGS	:= -Wall -Werror -Wextra 
+#-Wunreachable-code
 #-g -fsanitize=address -Ofast 
 # valgrind --leak-check=full ./meinProgramm
 
@@ -23,9 +24,7 @@ HEADERS	:= -I ./include -I $(LIBFT)
 LIBS	:= -L$(LIBFT) -lft
 
 SRCS	:= main.c error.c sort.c swap.c push.c rotate.c reverse_rotate.c \
-			push_swap.c utils.c sort_master_10k.c
-# SRCS	:= main.c exit_manager.c first_utils.c push_swap.c push.c rotation.c \
-# 			reverse_rotation.c sort.c swap.c
+			push_swap.c utils.c sort_master_10k.c checks.c
 OBJS	:= ${SRCS:.c=.o}
 
 all: libft $(NAME)

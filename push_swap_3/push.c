@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:45:30 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/10 16:03:14 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 13:47:01 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void	error0(int err_num)
 	if (err_num == -1)
 		ft_write(2, "Error\n Use ./push_swap \"1 2 3 .. \" OR 1 2 3..\n", 47);
 	if (err_num == 0)
-		ft_write(1, "Error\n first Malloc NULL\n", 26);
+		ft_write(2, "Error\n first Malloc NULL\n", 26);
 	exit(EXIT_FAILURE);
 }

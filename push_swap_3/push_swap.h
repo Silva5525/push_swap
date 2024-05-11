@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/10 16:01:09 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 14:03:31 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ void		check_position(t_link *stack);
 /// error.c
 void		error0(int err_num);
 void		error1(char **argv, int err_num);
+
+/// checks.c
+int			ft_is_digit(char *str);
+
 // void		error2(char **argv, int err_num);
 void		error3(t_stack *stack, int err_num);
 void		free_iter(t_stack *stack);

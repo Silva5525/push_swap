@@ -3247,7 +3247,7 @@ cont=1
 while [ $cont -lt $val ]
 do
 ARG=$(ruby -e "puts (00..99).to_a.shuffle.join(' ')");
-S=$(./push_swap $ARG | ./checker_Mac $ARG)
+S=$(./push_swap $ARG | ./checker_Mac $ARG) echo $S;
 if [ $S == "OK" ]; then
 	printf "${GREEN}$cont .[OK]${DEF_COLOR}";
 	control=2

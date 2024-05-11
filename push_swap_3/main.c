@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/11 12:11:25 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 14:02:03 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ void	str_c_to_int(char *argv, t_stack *stack)
 	i = 0;
 	count = 1;
 	while (numbers[count])
+	{
+		if (!ft_is_digit(numbers[count]))
+			error1(numbers, 8);
 		count++;
+	}
 	stack->a->arr = malloc(sizeof(int) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
@@ -57,7 +61,11 @@ void	char_to_int(char **argv, t_stack *stack)
 	i = 1;
 	count = 1;
 	while (argv[count])
+	{
+		if (!ft_is_digit(argv[count]))
+			error1(argv, 8);
 		count++;
+	}
 	stack->a->arr = malloc(sizeof(int) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);

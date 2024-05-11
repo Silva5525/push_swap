@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:16:59 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/10 16:00:44 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 14:08:13 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	check_stack(t_stack *stack)
 
 	j = 0;
 	i = 0;
+	if (sorted(stack->a))
+		error3(stack, 1);
 	while (i < stack->a->count)
 	{
 		j = 0;

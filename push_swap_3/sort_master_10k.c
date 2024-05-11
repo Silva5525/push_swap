@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:11:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/11 12:49:56 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 13:20:57 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	double_rotatations(t_stack *stack, int near)
 	if (midle_near
 		&& pos_near < goal_near)
 	{
-		printf("1pos_near: %d\n", pos_near);
 		while (stack->a->arr[0] != goal_near
 			&& stack->b->arr[0] != arr_near)
 			rr(stack->a, stack->b);
@@ -50,9 +49,6 @@ static void	double_rotatations(t_stack *stack, int near)
 	else if (!midle_near
 		&& pos_near > goal_near)
 	{
-		printf("2pos_near: %d\n", pos_near);
-		printf("2goal_near: %d\n", goal_near);
-		printf("2arr_near: %d\n", arr_near);
 		while (stack->a->arr[0] != goal_near
 			&& stack->b->arr[0] != arr_near)
 			rrr(stack->a, stack->b);

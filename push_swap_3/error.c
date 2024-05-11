@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:22:25 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/11 13:01:52 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 14:08:03 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ void	free_iter(t_stack *stack)
 void	error1(char **argv, int err_num)
 {
 	if (err_num == 1)
-		ft_write(2, "Error\n", 35);
+		ft_write(2, "Error\n str_c_to_int for ft_split.\n", 35);
+	if (err_num == 8)
+		ft_write(2, "Error\n found non Digit\n", 24);
 	while (*argv)
 	{
 		free(*argv);
@@ -113,9 +115,13 @@ void	error1(char **argv, int err_num)
 void	error3(t_stack *stack, int err_num)
 {
 	if (err_num == 10)
-		ft_write(2, "Error\n", 22);
+		ft_write(2, "Error\n Double Number\n", 22);
 	if (err_num == 0)
-		ft_write(2, "Error\n", 20);
+		ft_write(2, "Error\n Malloc fail\n", 20);
+	if (err_num == 1)
+		ft_write(2, "Error\n Malloc fail\n", 20);
+	if (err_num == 8)
+		ft_write(2, "Error\n found non Digit\n", 24);
 	free_iter(stack);
 	exit(EXIT_FAILURE);
 }
