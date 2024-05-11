@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:20:10 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/26 19:17:50 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:04:11 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	reverse_rotate(t_link *link)
 	if (!link || link->count < 2)
 		return ;
 	i = link->count - 1;
-
 	tmp = link->arr[link->count - 1];
 	while (i > 0)
 	{

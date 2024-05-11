@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/05/03 16:45:12 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 12:14:49 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /// is not correct
 void	rotations_b(t_stack *stack)
 {
-	int near_pos;
-	int target;
-	
+	int	near_pos;
+	int	target;
+
 	near_pos = get_nearest(stack->b);
 	target = stack->b->arr[near_pos];
 	while (stack->b->arr[0] != target)
@@ -32,58 +32,49 @@ void	rotations_b(t_stack *stack)
 /// 
 void	rotations_a(t_stack *stack)
 {
-	int near_pos;
-	int goal;
-	int target;
-	
+	int	near_pos;
+	int	goal;
+	int	target;
+
 	near_pos = get_nearest(stack->b);
 	goal = stack->b->goal[near_pos];
 	target = stack->a->arr[goal];
-	// printf("goal = %d\n", goal);
-	// printf("near_pos = %d\n", near_pos);
-	// printf("target = %d\n", target);
 	while (stack->a->arr[0] != target)
 	{
-		// printf("test = %d\n", target);
 		if (near_pos < (stack->a->count / 2))
 			ra(stack->a);
 		else
 			rra(stack->a);
 	}
-	// printf("arr[0] = %d\n", stack->a->arr[0]);
-	// printf("goal = %d\n", goal);
 }
 
 /// @brief rotates the stack a to the smallest element in the stack a.
-/// Up if the smallest is in uper half and down if the smallest is in the lower half
+/// Up if the smallest is in uper half and down if the smallest is in
+/// the lower half
 /// @param stack the holder of the stack a and b
 void	rotations_7(t_stack *stack)
 {
-	int min_pos;
-	int target;
-	
+	int	min_pos;
+	int	target;
+
 	init(stack);
 	min_pos = min_i(stack->a);
 	target = stack->a->arr[min_pos];
 	while (stack->a->arr[0] != target)
 	{
-		printf("rotation7 = %d\n", target);
 		if (min_pos < (stack->a->count / 2))
 			ra(stack->a);
 		else
 			rra(stack->a);
-		
 	}
 	pb(stack->a, stack->b);
 }
-
 
 // /// is not correct
 // void	rotations_a(t_stack *stack)
 // {
 // 	int hold;
 // 	int min;
-	
 // 	init(stack);
 // 	min = get_nearest(stack->b);
 // 	hold = min;
@@ -126,7 +117,7 @@ int	sorted(t_link *stack)
 /// @param stack the holder of the stack.
 void	sort_3(t_stack *stack)
 {
-		if (stack->a->arr[1] < stack->a->arr[0]
+	if (stack->a->arr[1] < stack->a->arr[0]
 		&& stack->a->arr[2] < stack->a->arr[0])
 		ra(stack->a);
 	else if (stack->a->arr[1] > stack->a->arr[0]
@@ -140,26 +131,26 @@ void	sort_3(t_stack *stack)
 //// comparing it with the next element. If the next element is smaller than
 //// the first element, the next element is inserted at the right position.
 //// @param stack is the struct holder of the stack a and b but it sorts only a
-void	insertion_sort1(t_stack *stack)
-{
-	int	i;
-	int	j;
-	int	tmp;
+// void	insertion_sort1(t_stack *stack)
+// {
+// 	int	i;
+// 	int	j;
+// 	int	tmp;
 
-	i = 1;
-	while (i < stack->map->count)
-	{
-		tmp = stack->map->arr[i];
-		j = i - 1;
-		while (j >= 0 && stack->map->arr[j] > tmp)
-		{
-			stack->map->arr[j + 1] = stack->map->arr[j];
-			j--;
-		}
-		stack->map->arr[j + 1] = tmp;
-		i++;
-	}
-}
+// 	i = 1;
+// 	while (i < stack->map->count)
+// 	{
+// 		tmp = stack->map->arr[i];
+// 		j = i - 1;
+// 		while (j >= 0 && stack->map->arr[j] > tmp)
+// 		{
+// 			stack->map->arr[j + 1] = stack->map->arr[j];
+// 			j--;
+// 		}
+// 		stack->map->arr[j + 1] = tmp;
+// 		i++;
+// 	}
+// }
 
 // void	insertion_sort(t_stack *stack)
 // {
@@ -186,23 +177,23 @@ void	insertion_sort1(t_stack *stack)
 /// @brief makes a copy of the stack a and sorts it to find the max,
 /// mid and min values. the map contains the pre sorted stack a.
 /// @param stack the stack holder
-void	map(t_stack *stack)
-{
-	int		i;
+// void	map(t_stack *stack)
+// {
+// 	int		i;
 
-	i = 0;
-	while(stack->a->count > i)
-	{
-		stack->map->arr[i] = stack->a->arr[i];
-		i++;
-	}
-	stack->map->count = stack->a->count;
-	insertion_sort1(stack);
-	stack->map->max = stack->map->arr[stack->map->count - 1];
-	stack->map->min = stack->map->arr[0];
-	i = stack->map->count / 2;
-	stack->map->mid = stack->map->arr[i];
-}
+// 	i = 0;
+// 	while(stack->a->count > i)
+// 	{
+// 		stack->map->arr[i] = stack->a->arr[i];
+// 		i++;
+// 	}
+// 	stack->map->count = stack->a->count;
+// 	insertion_sort1(stack);
+// 	stack->map->max = stack->map->arr[stack->map->count - 1];
+// 	stack->map->min = stack->map->arr[0];
+// 	i = stack->map->count / 2;
+// 	stack->map->mid = stack->map->arr[i];
+// }
 
 // void	insertion_sort(t_stack *stack)
 // {
@@ -235,7 +226,8 @@ void	map(t_stack *stack)
 //     if (inBetweenValue != -1) {
 //         printf("An in-between value in the stack is: %d\n", inBetweenValue);
 //     } else {
-//         printf("No in-between value found (stack may have too few distinct elements).\n");
+//         printf("No in-between value found (stack may have too few distinct
+// elements).\n");
 //     }
 
 //     return 0;

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:11:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/03 16:51:26 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 12:49:56 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /// @brief returns the position of the nearest element in the stack given
 /// @param stack the t_link element which is a or b
-int get_nearest(t_link *stack)
+int	get_nearest(t_link *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < stack->count)
@@ -28,46 +28,46 @@ int get_nearest(t_link *stack)
 	return (0);
 }
 
-// / is not correct
-void	push_sort(t_stack *stack)
+static void	double_rotatations(t_stack *stack, int near)
 {
-	int near;
-	int pos_near;
-	int goal_near;
-	int arr_near;
-	int midle_near;
+	int	pos_near;
+	int	goal_near;
+	int	arr_near;
+	int	midle_near;
 
-	init(stack);
-	near = get_nearest(stack->b);
-	// printf("near: %d\n", near);
-	// printf("stack->a->pos[near]: %d\n", stack->a->pos[near]);
-	// printf("stack->b->goal[near]: %d\n", stack->b->goal[near]);
-	// printf("stack->a->midle[near]: %d\n", stack->a->midle[near]);
-	pos_near = stack->b->arr[near]; // arr and pos are the same.. fix this shit or delate one
-	goal_near = stack->a->goal[near];
+	pos_near = stack->b->arr[0];
+	goal_near = stack->b->goal[near];
 	arr_near = stack->b->arr[near];
 	midle_near = stack->b->midle[near];
 	if (midle_near
 		&& pos_near < goal_near)
 	{
-		printf("1\n");
+		printf("1pos_near: %d\n", pos_near);
 		while (stack->a->arr[0] != goal_near
 			&& stack->b->arr[0] != arr_near)
-		{
-			printf("1\n");
 			rr(stack->a, stack->b);
-		}
 	}
 	else if (!midle_near
 		&& pos_near > goal_near)
 	{
-		printf("2\n");
+		printf("2pos_near: %d\n", pos_near);
+		printf("2goal_near: %d\n", goal_near);
+		printf("2arr_near: %d\n", arr_near);
 		while (stack->a->arr[0] != goal_near
 			&& stack->b->arr[0] != arr_near)
-		{
 			rrr(stack->a, stack->b);
-		}
 	}
+}
+
+/// @brief sorts the stack a and b depending on the nearest element in b
+/// @param stack 
+void	push_sort(t_stack *stack)
+{
+	int	near;
+
+	init(stack);
+	near = get_nearest(stack->b);
+	double_rotatations(stack, near);
 	rotations_b(stack);
 	rotations_a(stack);
 	pa(stack->a, stack->b);
@@ -77,7 +77,6 @@ void	push_sort(t_stack *stack)
 /// @param stack holds the stacks a and b
 void	push_swap_7(t_stack *stack)
 {
-	insertion_sort1(stack);
 	if (stack->a->count <= 7 && !sorted(stack->a))
 	{
 		while (stack->a->count > 3)
@@ -85,16 +84,16 @@ void	push_swap_7(t_stack *stack)
 	}
 	sort_3(stack);
 	while (stack->b->count > 0)
-		pa(stack->a, stack->b);	
+		pa(stack->a, stack->b);
 }
 
 /// @brief sorts the stack if it has more than 7 elements
 /// @param stack holds the stacks a and b 
-void 	push_swap(t_stack *stack)
+void	push_swap(t_stack *stack)
 {
-	int min;
-	int pos_min;
-	insertion_sort1(stack);
+	int	min;
+	int	pos_min;
+
 	if (!sorted(stack->a))
 	{
 		while (stack->a->count > 3)
@@ -102,9 +101,7 @@ void 	push_swap(t_stack *stack)
 	}
 	sort_3(stack);
 	while (stack->b->count > 0)
-	{
 		push_sort(stack);
-	}
 	min = min_i(stack->a);
 	pos_min = stack->a->arr[min];
 	if (min < (stack->a->count / 2))
@@ -115,12 +112,6 @@ void 	push_swap(t_stack *stack)
 	else
 	{
 		while (stack->a->arr[0] != pos_min)
-		{
 			rra(stack->a);
-			printf("stack->a->arr[half]: %d\n", pos_min);
-			printf("stack->a->arr[0]: %d\n", stack->a->arr[0]);
-			printf("stack->a->count: %d\n", stack->a->count);
-		}
-			
 	}
 }

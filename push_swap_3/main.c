@@ -6,37 +6,30 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/01 16:15:37 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/11 12:11:25 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void check_stack(t_stack *stack)
+static void	free_numbers(char **numbers, int count)
 {
-	int i;
-	int j;
+	int	i;
 
-	j = 0;
 	i = 0;
-	while (i < stack->a->count)
+	while (i < count)
 	{
-		j = 0;
-		while (j < stack->a->count)
-		{
-			if (stack->a->arr[i] == stack->a->arr[j] && i != j)
-				error3(stack, 10);
-			j++;
-		}
+		free(numbers[i]);
 		i++;
 	}
+	free(numbers);
 }
 
-void str_c_to_int(char *argv, t_stack *stack)
+void	str_c_to_int(char *argv, t_stack *stack)
 {
-	char **numbers;
-	int i;
-	int count;
+	char	**numbers;
+	int		i;
+	int		count;
 
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
@@ -53,23 +46,13 @@ void str_c_to_int(char *argv, t_stack *stack)
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
-	stack->map->arr = malloc(sizeof(int) * count);
-	if (!stack->map->arr)
-		error3(stack, 0);
-	stack->map->count = 0;
-	while (i < count)
-	{
-		stack->a->arr[i] = ft_atoi(numbers[i]);
-		free(numbers[i]);
-		i++;
-	}
-	free(numbers);
+	free_numbers(numbers, count);
 }
 
-void char_to_int(char **argv, t_stack *stack)
+void	char_to_int(char **argv, t_stack *stack)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 1;
 	count = 1;
@@ -82,10 +65,6 @@ void char_to_int(char **argv, t_stack *stack)
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
-	stack->map->arr = malloc(sizeof(int) * count);
-	if (!stack->map->arr)
-		error3(stack, 0);
-	stack->map->count = 0;
 	while (i < count)
 	{
 		stack->a->arr[i - 1] = ft_atoi(argv[i]);
@@ -94,26 +73,25 @@ void char_to_int(char **argv, t_stack *stack)
 	stack->a->count = count - 1;
 }
 
-void init_stack(t_stack **stack)
+static	void	operation_cases(t_stack *stack)
 {
-	*stack = malloc(sizeof(t_stack));
-	if (!*stack)
-		error0(0);
-	(*stack)->a = malloc(sizeof(t_link));
-	if (!(*stack)->a)
-		error3(*stack, 0);
-	(*stack)->b = malloc(sizeof(t_link));
-	if (!(*stack)->b)
-		error3(*stack, 0);
-	(*stack)->map = malloc(sizeof(t_link));
-	if (!(*stack)->map)
-		error3(*stack, 0);
+	if (stack->a->count == 2)
+	{
+		if (stack->a->arr[0] > stack->a->arr[1])
+			sa(stack->a);
+	}
+	else if (stack->a->count == 3)
+		sort_3(stack);
+	else if (stack->a->count <= 7)
+		push_swap_7(stack);
+	else if (stack->a->count > 7)
+		push_swap(stack);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stack;
-	int i;
+	t_stack	*stack;
+	int		i;
 
 	i = 0;
 	stack = NULL;
@@ -126,59 +104,25 @@ int main(int argc, char **argv)
 		char_to_int(argv, stack);
 	check_stack(stack);
 	while (i < stack->a->count)
-	{
-		printf("1stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
 		i++;
-	}
 	i = 0;
 	init_int(stack);
 	init(stack);
-	if (!sorted(stack->a))
-	{
-		map(stack);
-		if (stack->a->count == 2)
-		{
-			if (stack->a->arr[0] > stack->a->arr[1])
-				sa(stack->a);
-		}
-		else if (stack->a->count == 3)
-			sort_3(stack);
-		else if (stack->a->count <= 7)
-			push_swap_7(stack);
-		else if (stack->a->count > 7)
-			push_swap(stack);
-		// else
-		// 	tim_sort(stack);
-	}
-	printf("stack->a->count: %d\n", stack->a->count);
-	i = 0;
-	while (i < stack->a->count)
-	{
-		printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
-		i++;
-	}
-	i = 0;
-	while (i < stack->b->count)
-	{
-		printf("stack->b->arr[%d]: %d\n", i, stack->b->arr[i]);
-		i++;
-	}
-	i = 0;
-	while (i < stack->map->count)
-	{
-		printf("stack->map->arr[%d]: %d\n", i, stack->map->arr[i]);
-		i++;
-	}
+	operation_cases(stack);
 	free_iter(stack);
 	return (0);
 }
 
-// if (!sorted(stack))
-// {
-// 	if (stack->a->next == NULL || a->next->next == NULL)
-// 		error3(stack, 11);
-// 	else if (a->next->next->next == NULL)
-// 		insertion_sort(stack);
-// 	else
-// 		tim_sort();
-// }
+	// printf("stack->a->count: %d\n", stack->a->count);
+	// i = 0;
+	// while (i < stack->a->count)
+	// {
+	// 	printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
+	// 	i++;
+	// }
+	// i = 0;
+	// while (i < stack->b->count)
+	// {
+	// 	printf("stack->b->arr[%d]: %d\n", i, stack->b->arr[i]);
+	// 	i++;
+	// }
