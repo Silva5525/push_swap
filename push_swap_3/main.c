@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/11 20:02:10 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/12 17:32:37 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	free_numbers(char **numbers, int count)
 void	str_c_to_int(char *argv, t_stack *stack)
 {
 	char	**numbers;
-	int		i;
 	int		count;
+	int		i;
 
+	i = 0;
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
 		error1(numbers, 0);
-	i = 0;
 	count = 1;
 	while (numbers[count])
 	{
@@ -42,14 +42,19 @@ void	str_c_to_int(char *argv, t_stack *stack)
 			error1(numbers, 8);
 		count++;
 	}
-	stack->a->arr = malloc((sizeof(int) + 1) * count);
+	stack->a->arr = malloc(sizeof(int) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
 	stack->a->count = count;
-	stack->b->arr = malloc((sizeof(int) + 1) * count);
+	stack->b->arr = malloc(sizeof(int) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
+	while (i < count)
+	{
+		stack->a->arr[i] = ft_atoi(numbers[i]);
+		i++;
+	}
 	free_numbers(numbers, count);
 }
 

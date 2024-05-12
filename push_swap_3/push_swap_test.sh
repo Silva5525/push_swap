@@ -3489,11 +3489,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}1. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="1 2 3 4 5 6 7 8 9";
@@ -3503,11 +3503,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}2. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="1 2 3";
@@ -3517,11 +3517,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}3. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="1";
@@ -3531,11 +3531,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}4. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="0 1 2 3 4";
@@ -3545,11 +3545,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}5. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="1 2";
@@ -3559,11 +3559,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}6. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30";
@@ -3573,11 +3573,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}7. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="6 7 8";
@@ -3587,11 +3587,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}8. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="2147483645 2147483646 2147483647";
@@ -3601,11 +3601,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}9. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="-2147483648 -2147483647 -2147483646";
@@ -3615,11 +3615,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}10. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50";
@@ -3629,11 +3629,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}11. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 ARG="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77";
@@ -3643,11 +3643,11 @@ if [ $N -eq 0 ]; then
 else
 	printf "${RED}12. [KO]${DEF_COLOR}";
 fi
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}\n";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}\n";
 fi
 
 printf ${BLUE}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
@@ -4095,7 +4095,7 @@ else
 fi
 
 printf ${BLUE}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
-printf ${BLUE}"\n\t\t  All size test + leaks check\t\n"${DEF_COLOR};
+printf ${BLUE}"\n\t\t  All size test + valgrind check\t\n"${DEF_COLOR};
 printf ${BLUE}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
 
 echo All size test >> traces.txt
@@ -4134,14 +4134,14 @@ else
 fi
 if [ $cont -eq 5 ]; then
 
-R=$(leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?)
+R=$(valgrind -atExit -- ./push_swap $ARG > /dev/null && echo $?)
 ((cont4++))
 if [[ $R == 0 ]]; then
   printf "${GREEN}$cont3 [MEMORY OK] ${DEF_COLOR}\n";
   ((res_3++))
 else
-  printf "${RED}$cont3 [KO LEAKS] ${DEF_COLOR}\n";
-  echo TEST LEAKS $cont ARG:"$ARG" >> traces.txt
+  printf "${RED}$cont3 [KO valgrind] ${DEF_COLOR}\n";
+  echo TEST valgrind $cont ARG:"$ARG" >> traces.txt
   ((res_4++))
 fi
 fi
@@ -4875,7 +4875,7 @@ fi
 ARG="2 1 4 3";
 S=$(echo -e "pb\npb\nss\npa\npa" | ./checker_Mac $ARG)
 R=$(echo -e "pb\npb\nss\npa\npa" | ./checker $ARG)
-L=$(echo -e "pb\npb\nss\npa\npa" | leaks -atExit -- ./checker $ARG > /dev/null && echo $?)
+L=$(echo -e "pb\npb\nss\npa\npa" | valgrind -atExit -- ./checker $ARG > /dev/null && echo $?)
 if [ $S == $R ]; then
   printf "${GREEN}3.[OK] ${DEF_COLOR}";
 else
@@ -4884,7 +4884,7 @@ fi
 if [[ $L == 0 ]]; then
   printf "${GREEN}[MEMORY OK] ${DEF_COLOR}\n";
 else
-  printf "${RED}[KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED}[KO valgrind] ${DEF_COLOR}\n";
 fi
 
 #pruebas RA
@@ -4911,7 +4911,7 @@ fi
 ARG="1";
 S=$(echo -e "sa\nsb\nss\npa\npb\npa\npb\nsb\npa\nra\nrb\nrr\nrra\nrrb\nrrr" | ./checker_Mac $ARG)
 R=$(echo -e "sa\nsb\nss\npa\npb\npa\npb\nsb\npa\nra\nrb\nrr\nrra\nrrb\nrrr" | ./checker $ARG)
-L=$(echo -e "sa\nsb\nss\npa\npb\npa\npb\nsb\npa\nra\nrb\nrr\nrra\nrrb\nrrr" | leaks -atExit -- ./checker $ARG > /dev/null && echo $?)
+L=$(echo -e "sa\nsb\nss\npa\npb\npa\npb\nsb\npa\nra\nrb\nrr\nrra\nrrb\nrrr" | valgrind -atExit -- ./checker $ARG > /dev/null && echo $?)
 if [ $S == $R ]; then
   printf "${GREEN}6.[OK] ${DEF_COLOR}";
 else
@@ -4920,7 +4920,7 @@ fi
 if [[ $L == 0 ]]; then
   printf "${GREEN}[MEMORY OK] ${DEF_COLOR}\n";
 else
-  printf "${RED}[KO LEAKS] ${DEF_COLOR}\n";
+  printf "${RED}[KO valgrind] ${DEF_COLOR}\n";
 fi
 
 printf ${MAGENTA}"\n-------------------------------------------------------------\n"${DEF_COLOR};
@@ -5210,7 +5210,7 @@ rm -rf 0
 rm -rf test_check.txt
 
 printf ${MAGENTA}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
-printf ${MAGENTA}"\n\t\t  All size test + leaks check\t\n"${DEF_COLOR};
+printf ${MAGENTA}"\n\t\t  All size test + valgrind check\t\n"${DEF_COLOR};
 printf ${MAGENTA}"\n-------------------------------------------------------------\n\n"${DEF_COLOR};
 
 echo BONUS-All size test >> traces.txt
@@ -5234,11 +5234,11 @@ else
 	echo TEST $cont ARG:"$ARG" >> traces.txt
  	((res_2++))
 fi
-R=$(./push_swap $ARG | leaks -atExit -- ./checker $ARG > /dev/null && echo $?)
+R=$(./push_swap $ARG | valgrind -atExit -- ./checker $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}";
 fi
 echo
 ((cont++))
@@ -5258,11 +5258,11 @@ else
 	echo TEST $cont ARG:"$ARG" >> traces.txt
  	((res_2++))
 fi
-R=$(./push_swap $ARG | leaks -atExit -- ./checker $ARG > /dev/null && echo $?)
+R=$(./push_swap $ARG | valgrind -atExit -- ./checker $ARG > /dev/null && echo $?)
 if [[ $R == 0 ]]; then
   printf "${GREEN}[MOK] ${DEF_COLOR}";
 else
-  printf "${RED} [KO LEAKS] ${DEF_COLOR}";
+  printf "${RED} [KO valgrind] ${DEF_COLOR}";
 fi
 echo
 ((cont++))
