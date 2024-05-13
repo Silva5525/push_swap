@@ -52,10 +52,8 @@
 
 # # Setze DEBIAN_FRONTEND zurück
 # ARG DEBIAN_FRONTEND=
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
-
-# Vermeide Dialoge mit apt-get
-ARG DEBIAN_FRONTEND=noninteractive
+ARG VARIANT=debian-11
+FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 
 # Installiere GLFW, OpenGL, pkg-config und notwendige Pakete
 RUN apt-get update \
@@ -68,6 +66,7 @@ RUN apt-get update \
     software-properties-common \
     build-essential \
     wget \
+    valgrind \
     pkg-config \ # Hinzugefügt pkg-config zur Installation
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
