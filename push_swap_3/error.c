@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:22:25 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/12 16:56:12 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:45:53 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	free_iter(t_stack *stack)
 void	error1(char **argv, int err_num)
 {
 	if (err_num == 1)
-		ft_write(2, "Error\n str_c_to_int for ft_split.\n", 35);
+		ft_write(2, "Error\n no or only one Number\n", 30);
 	if (err_num == 8)
 		ft_write(2, "Error\n found non Digit\n", 24);
 	while (*argv)
@@ -122,6 +122,8 @@ void	error3(t_stack *stack, int err_num)
 		ft_write(2, "Error\n Malloc fail\n", 20);
 	if (err_num == 2)
 		ft_write(2, "Error\n sorted\n", 15);
+	if (err_num == 3)
+		ft_write(2, "Error\n only one Number\n", 15);
 	if (err_num == 8)
 		ft_write(2, "Error\n found non Digit or non INT\n", 35);
 	free_iter(stack);

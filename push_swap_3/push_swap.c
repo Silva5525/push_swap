@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:16:59 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/12 17:33:54 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:58:21 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,21 +90,6 @@ void	check_stack(t_stack *stack)
 
 	j = 0;
 	i = 0;
-	printf("stack->a->count: %d\n", stack->a->count);
-	while (i < stack->a->count)
-	{
-		printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
-		i++;
-	}
-	if (sorted(stack->a))
-		error3(stack, 2);
-	printf("stack->a->count: %d\n", stack->a->count);
-	i = 0;
-	while (i < stack->a->count)
-	{
-		printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
-		i++;
-	}
 	while (i < stack->a->count)
 	{
 		j = 0;
