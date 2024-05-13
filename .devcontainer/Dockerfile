@@ -66,7 +66,7 @@ RUN apt-get update \
     software-properties-common \
     build-essential \
     wget \
-    valgrind
+    valgrind \
     pkg-config \ # Hinzugefügt pkg-config zur Installation
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
