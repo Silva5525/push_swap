@@ -5,54 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 16:58:32 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/24 16:58:48 by wdegraf          ###   ########.fr       */
+/*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
+/*   Updated: 2024/05/13 14:56:31 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// @brief checks if the stack has no duplicates, if it has duplicates it will
-/// throw an error.
-/// @param stack holder of the stacks
-void	check_stack(t_stack *stack)
+/// @brief copy the numbers from the split string to the stack and free the 
+/// split string... and checks if its maybe only one number
+/// @param stack holds the stacks a and b
+/// @param numbers holds the split string
+/// @param count number countet of the split string
+static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 {
-	int		i;
-	int		j;
+	int	i;
 
-	j = 0;
 	i = 0;
-	while (i < stack->a->count)
+	while (i < count)
 	{
-		j = 0;
-		while (j < stack->a->count)
-		{
-			if (stack->a->arr[i] == stack->a->arr[j] && i != j)
-				error3(stack, 10);
-			j++;
-		}
+		stack->a->arr[i] = ft_atoi(numbers[i]);
+		free(numbers[i]);
 		i++;
 	}
+	if (count == 1)
+	{
+		free(numbers);
+		error3(stack, 3);
+	}
+	free(numbers);
 }
 
-/// @brief initialize the stacks if argv are 2 arguments. Splits the string
-/// ,counts it, and converts it to int and stores it in the stack a. Initializes
-/// the oter stacks and gives it a count.
-/// @param argv the values of the stack as chars
-/// @param stack holder of the stack
+/// @brief counts the numbers in the split string and checks if they are digits
+/// wit ft_is_digit... saves the countet numbers in the stack_a_count and sets
+/// the stack_b_count to 0... mallocs the needed memory for the stack_a.
+/// @param argv 
+/// @param stack 
 void	str_c_to_int(char *argv, t_stack *stack)
 {
 	char	**numbers;
-	int		i;
 	int		count;
 
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
 		error1(numbers, 0);
-	i = 0;
 	count = 1;
 	while (numbers[count])
+	{
+		if (!ft_is_digit(numbers[count]))
+			error1(numbers, 8);
 		count++;
+	}
 	stack->a->arr = malloc(sizeof(int) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
@@ -61,44 +64,29 @@ void	str_c_to_int(char *argv, t_stack *stack)
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
-	stack->map->arr = malloc(sizeof(int) * count);
-	if (!stack->map->arr)
-		error3(stack, 0);
-	stack->map->count = 0;
-	while (i < count)
-	{
-		stack->a->arr[i] = ft_atoi(numbers[i]);
-		free(numbers[i]);
-		i++;
-	}
-	free(numbers);
+	copy_free_numbers(stack, numbers, count);
 }
 
-/// @brief initialize the stacks if argv is more than 2 arguments, counts it,
-/// converts the char to int and stores it in the stack a. Initializes the other
-/// stacks and gives it a count.
-/// @param argv the values of the stack as chars
-/// @param stack the holder of the stack
 void	char_to_int(char **argv, t_stack *stack)
 {
-	int		i;
-	int		count;
+	int	i;
+	int	count;
 
 	i = 1;
 	count = 1;
 	while (argv[count])
+	{
+		if (!ft_is_digit(argv[count]))
+			error1(argv, 8);
 		count++;
-	stack->a->arr = malloc(sizeof(int) * count);
+	}
+	stack->a->arr = malloc((sizeof(int) + 1) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
-	stack->b->arr = malloc(sizeof(int) * count);
+	stack->b->arr = malloc((sizeof(int) + 1) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
-	stack->map->arr = malloc(sizeof(int) * count);
-	if (!stack->map->arr)
-		error3(stack, 0);
-	stack->map->count = 0;
 	while (i < count)
 	{
 		stack->a->arr[i - 1] = ft_atoi(argv[i]);
@@ -107,23 +95,19 @@ void	char_to_int(char **argv, t_stack *stack)
 	stack->a->count = count - 1;
 }
 
-/// @brief initialize the stack with malloc for the struct of a b and map
-/// @param stack stack holder
-void	init_stack(t_stack **stack)
+static	void	operation_cases(t_stack *stack)
 {
-	*stack = malloc(sizeof(t_stack));
-	if (!*stack)
-		error0(0);
-	(*stack)->a = malloc(sizeof(t_link));
-	if (!(*stack)->a)
-		error3(*stack, 0);
-	(*stack)->b = malloc(sizeof(t_link));
-	if (!(*stack)->b)
-		error3(*stack, 0);
-	(*stack)->map = malloc(sizeof(t_link));
-	if (!(*stack)->map)
-		error3(*stack, 0);
-	
+	if (stack->a->count == 2)
+	{
+		if (stack->a->arr[0] > stack->a->arr[1])
+			sa(stack->a);
+	}
+	else if (stack->a->count == 3)
+		sort_3(stack);
+	else if (stack->a->count <= 7)
+		push_swap_7(stack);
+	else if (stack->a->count > 7)
+		push_swap(stack);
 }
 
 int	main(int argc, char **argv)
@@ -142,35 +126,23 @@ int	main(int argc, char **argv)
 		char_to_int(argv, stack);
 	check_stack(stack);
 	while (i < stack->a->count)
-	{
-		printf("1stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
 		i++;
-	}
-	i = 0;
-	if (!sorted(stack->a))
-	{
-		if (stack->a->count <= 3)
-			sort_3(stack);
-	}
-	printf("stack->a->count: %d\n", stack->a->count);
-	i = 0;
-	while (i < stack->a->count)
-	{
-		printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
-		i++;
-	}
-	i = 0;
-	while (i < stack->b->count)
-	{
-		printf("stack->b->arr[%d]: %d\n", i, stack->b->arr[i]);
-		i++;
-	}
-	i = 0;
-	while (i < stack->map->count)
-	{
-		printf("stack->map->arr[%d]: %d\n", i, stack->map->arr[i]);
-		i++;
-	}
-	free_iter(stack);
+	init_int(stack);
+	init(stack);
+	operation_cases(stack);
 	return (0);
 }
+
+	// printf("stack->a->count: %d\n", stack->a->count);
+	// i = 0;
+	// while (i < stack->a->count)
+	// {
+	// 	printf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
+	// 	i++;
+	// }
+	// i = 0;
+	// while (i < stack->b->count)
+	// {
+	// 	printf("stack->b->arr[%d]: %d\n", i, stack->b->arr[i]);
+	// 	i++;
+	// }

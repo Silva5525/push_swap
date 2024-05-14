@@ -5,58 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 16:45:40 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/24 16:58:51 by wdegraf          ###   ########.fr       */
+/*   Created: 2024/04/15 14:22:25 by wdegraf           #+#    #+#             */
+/*   Updated: 2024/05/13 14:45:53 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// @brief free the t_stack and its t_link a and b and the t_map arrays.
-/// @param stack holder of the stacks
+void	free3(t_stack *stack)
+{
+	if (stack->b->pos != NULL)
+	{
+		free(stack->b->pos);
+		stack->b->pos = NULL;
+	}
+	if (stack->b->distance != NULL)
+	{
+		free(stack->b->distance);
+		stack->b->distance = NULL;
+	}
+	if (stack->b->goal != NULL)
+	{
+		free(stack->b->goal);
+		stack->b->goal = NULL;
+	}
+	if (stack->b->nearest != NULL)
+	{
+		free(stack->b->nearest);
+		stack->b->nearest = NULL;
+	}
+	if (stack->b->midle != NULL)
+	{
+		free(stack->b->midle);
+		stack->b->midle = NULL;
+	}
+}
+
+void	free2(t_stack *stack)
+{
+	if (stack->a->pos != NULL)
+	{
+		free(stack->a->pos);
+		stack->a->pos = NULL;
+	}
+	if (stack->a->distance != NULL)
+	{
+		free(stack->a->distance);
+		stack->a->distance = NULL;
+	}
+	if (stack->a->goal != NULL)
+	{
+		free(stack->a->goal);
+		stack->a->goal = NULL;
+	}
+	if (stack->a->nearest != NULL)
+	{
+		free(stack->a->nearest);
+		stack->a->nearest = NULL;
+	}
+	if (stack->a->midle != NULL)
+	{
+		free(stack->a->midle);
+		stack->a->midle = NULL;
+	}
+}
+
 void	free_iter(t_stack *stack)
 {
+	free2(stack);
+	free3(stack);
 	if (stack->a->arr != NULL)
 	{
 		free(stack->a->arr);
 		stack->a->arr = NULL;
-		free(stack->a);
 	}
+	free(stack->a);
 	if (stack->b->arr != NULL)
 	{
 		free(stack->b->arr);
 		stack->b->arr = NULL;
-		free(stack->b);
 	}
-	if (stack->map->arr != NULL)
-	{
-		free(stack->map->arr);
-		stack->map->arr = NULL;
-		free(stack->map);
-	}
+	free(stack->b);
 	free(stack);
 }
 
-
-/// @brief exit the program with EXIT_FAILURE and write the error message
-/// with freeing anything. 
-/// @param err_num the write error number
-void	error0(int err_num)
-{
-	if (err_num == -1)
-		ft_write(2, "Error\n Use ./push_swap \"1 2 3 .. \" OR 1 2 3..\n", 47);
-	if (err_num == 0)
-		ft_write(1, "Error\n first Malloc NULL\n", 26);
-	exit(EXIT_FAILURE);
-}
-
-/// @brief free the argv and exit the program with EXIT_FAILURE
-/// @param argv holder of the values of the stack as chars
-/// @param err_num the write error number
 void	error1(char **argv, int err_num)
 {
 	if (err_num == 1)
-		ft_write(1, "Error\n str_c_to_int for ft_split.\n", 35);
+		ft_write(2, "Error\n no or only one Number\n", 30);
+	if (err_num == 8)
+		ft_write(2, "Error\n found non Digit\n", 24);
 	while (*argv)
 	{
 		free(*argv);
@@ -74,16 +112,20 @@ void	error1(char **argv, int err_num)
 // 	exit(EXIT_FAILURE);
 // }
 
-
-/// @brief frees the stack and exits the program with EXIT_FAILURE
-/// @param stack stack holder
-/// @param err_num the write error number
 void	error3(t_stack *stack, int err_num)
 {
 	if (err_num == 10)
-		ft_write(1, "Error\n Double Number\n", 22);
+		ft_write(2, "Error\n Double Number\n", 22);
 	if (err_num == 0)
-		ft_write(1, "Error\n Malloc fail\n", 20);
+		ft_write(2, "Error\n Malloc fail\n", 20);
+	if (err_num == 1)
+		ft_write(2, "Error\n Malloc fail\n", 20);
+	if (err_num == 2)
+		ft_write(2, "Error\n sorted\n", 15);
+	if (err_num == 3)
+		ft_write(2, "Error\n only one Number\n", 15);
+	if (err_num == 8)
+		ft_write(2, "Error\n found non Digit or non INT\n", 35);
 	free_iter(stack);
 	exit(EXIT_FAILURE);
 }
