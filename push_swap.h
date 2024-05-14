@@ -77,13 +77,13 @@ void		check_position(t_link *stack);
 
 /// error.c
 void		error0(int err_num);
-void		error1(char **argv, int err_num);
-
+// void		error1(char **argv, int err_num);
+void		error3(t_stack *stack, int err_num);
 /// checks.c
 int			ft_is_digit(char *str);
 
 // void		error2(char **argv, int err_num);
-void		error3(t_stack *stack, int err_num);
+
 void		free_iter(t_stack *stack);
 
 /// sort.c

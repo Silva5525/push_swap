@@ -83,26 +83,6 @@ int	min_i(t_link *stack)
 	return (position);
 }
 
-void	check_stack(t_stack *stack)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (i < stack->a->count)
-	{
-		j = 0;
-		while (j < stack->a->count)
-		{
-			if (stack->a->arr[i] == stack->a->arr[j] && i != j)
-				error3(stack, 10);
-			j++;
-		}
-		i++;
-	}
-}
-
 void	init_stack(t_stack **stack)
 {
 	*stack = malloc(sizeof(t_stack));

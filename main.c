@@ -19,16 +19,19 @@
 /// @param count number countet of the split string
 static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 {
-	int	i;
-
+	int		i;
+	bool	wrong;
 	i = 0;
+	wrong = false;
 	while (i < count)
 	{
 		stack->a->arr[i] = ft_atoi(numbers[i]);
+		if (numbers[i][0] == '-' && (numbers[i][1] < '0' || numbers[i][1] > '9'))
+			wrong = true;
 		free(numbers[i]);
 		i++;
 	}
-	if (count == 1)
+	if (count == 1 || wrong)
 	{
 		free(numbers);
 		error3(stack, 3);
@@ -48,12 +51,13 @@ void	str_c_to_int(char *argv, t_stack *stack)
 
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
-		error1(numbers, 0);
+		error0(0);
 	count = 1;
 	while (numbers[count])
 	{
-		if (!ft_is_digit(numbers[count]))
-			error1(numbers, 8);
+		if (ft_is_digit(numbers[count])
+			|| (numbers[count][0] == '-' && numbers[count - 1][0] == '-'))
+			error0(8);
 		count++;
 	}
 	stack->a->arr = malloc(sizeof(int) * count);
@@ -76,8 +80,9 @@ void	char_to_int(char **argv, t_stack *stack)
 	count = 1;
 	while (argv[count])
 	{
-		if (!ft_is_digit(argv[count]))
-			error1(argv, 8);
+		if (ft_is_digit(argv[count])
+			|| (argv[count][0] == '-' && argv[count - 1][0] == '-'))
+			error0(8);
 		count++;
 	}
 	stack->a->arr = malloc((sizeof(int) + 1) * count);
