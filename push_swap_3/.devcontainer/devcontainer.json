@@ -1,0 +1,19 @@
+{
+    "name": "Mein Projekt mit Codespaces",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "customizations": { 
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cmake-tools"
+            ],
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            }
+        }
+    },
+    "forwardPorts": [],
+    "postCreateCommand": "echo 'Codespace ist bereit!'"
+}
