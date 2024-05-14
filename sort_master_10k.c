@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:11:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/11 13:20:57 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/14 17:05:53 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,29 @@ int	get_nearest(t_link *stack)
 
 static void	double_rotatations(t_stack *stack, int near)
 {
-	int	pos_near;
+	int	arr0;
 	int	goal_near;
 	int	arr_near;
 	int	midle_near;
 
-	pos_near = stack->b->arr[0];
+	arr0 = stack->b->arr[0];
 	goal_near = stack->b->goal[near];
 	arr_near = stack->b->arr[near];
 	midle_near = stack->b->midle[near];
-	if (midle_near
-		&& pos_near < goal_near)
+	if (midle_near && (arr0 > goal_near))
 	{
 		while (stack->a->arr[0] != goal_near
 			&& stack->b->arr[0] != arr_near)
 			rr(stack->a, stack->b);
+		init(stack);
 	}
-	else if (!midle_near
-		&& pos_near > goal_near)
+	else if (!midle_near && (arr0 > goal_near))
+
 	{
 		while (stack->a->arr[0] != goal_near
 			&& stack->b->arr[0] != arr_near)
 			rrr(stack->a, stack->b);
+		init(stack);
 	}
 }
 
