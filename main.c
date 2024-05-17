@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/17 23:25:54 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 00:03:05 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 void	str_c_to_ssize_t(char *argv, t_stack *stack)
 {
 	char		**numbers;
-	int		count;
+	size_t		count;
 	
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
@@ -65,11 +65,11 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 	}
 	if (stack->a->min == true)
 		error3(stack, 1);
-	stack->a->arr = malloc((sizeof(ssize_t) + 1)  * count);
+	stack->a->arr = malloc(sizeof(ssize_t)  * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
 	stack->a->count = count;
-	stack->b->arr = malloc((sizeof(ssize_t) + 1) * count);
+	stack->b->arr = malloc(sizeof(ssize_t) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
@@ -78,8 +78,8 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 
 void	char_to_ssize_t(char **argv, t_stack *stack)
 {
-	ssize_t	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	stack->a->min = false;
 	i = 1;
@@ -97,6 +97,7 @@ void	char_to_ssize_t(char **argv, t_stack *stack)
 	stack->a->arr = malloc((sizeof(ssize_t) + 1) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
+	stack->a->count = count - 1;
 	stack->b->arr = malloc((sizeof(ssize_t) + 1) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
@@ -105,7 +106,7 @@ void	char_to_ssize_t(char **argv, t_stack *stack)
 	{
 		stack->a->arr[i - 1] = ft_ato_ssize_t(argv[i]);
 		if (stack->a->arr[i - 1] < -2147483648 || stack->a->arr[i - 1] > 2147483647
-			|| stack->a->arr[i - 1] == '+')
+			)
 			error3(stack, 4);
 		i++;
 	}
@@ -148,6 +149,11 @@ int	main(int argc, char **argv)
 	init_int(stack);
 	init(stack);
 	operation_cases(stack);
+	// printf("stack->a->count: %ld\n", stack->a->count);
+	// for (int i = 0; i < stack->a->count; i++)
+	// {
+	// 	printf("%ld\n", stack->a->arr[i]);
+	// }
 	free_iter(stack);
 	return (0);
 }
