@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/17 20:31:14 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 23:19:32 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,3 +121,85 @@ void			rrb(t_link *b);
 void			rrr(t_link *a, t_link *b);
 
 #endif
+
+// README.md
+
+// /// @brief initializes the values needet for sorting
+// /// @param stack holder of the stack
+// init(t_stack *stack);
+
+// /// @brief checks the position of the elements in the stack and sets under
+// /// the midle of the stack to true and the above to false
+// /// @param stack->pos[i] a/b the position of the elements in the stack
+// /// @param stack->midle[i] a/b true or false if the element is under or above the midle
+// check_position(t_link *a/b);
+
+// /// @brief it finds the smallest element in a that is still larger than 
+// /// the given element in b  
+// /// @param a stack a /// not used
+// /// @param b->goal[i] is the smallest element in a that is still 
+// /// larger than the given element in b
+// /// the finish position of the element in stack a
+// /// if not foundsets the goal to the position of the smallest element in a
+// static void give_position(t_link *a, t_link *b);
+
+// /// @param b->distance[i]  the distance of the element to the goal
+// void	count_distance(t_link *a, t_link *b);
+
+// /// @brief gives the nearest element for the b stack to push it checks the lowest b->distance
+// /// @param b->nearest[i] is true if the element is the nearest all other are false
+// /// @param a stack a /// not used
+// void	give_nearest(t_link *b);
+
+// /// @brief finds the position of the smallest element in the stack and saves it in stack->min
+// /// @param stack->min the smallest int in the stack
+// /// @return @param position of the smallest element
+// int	find_min(t_link *stack);
+
+// /// @brief searches the position of the nearearest element in stack a. puts the target on the
+// /// element it holds and rotates it up if it is under the midle or down if it is above the midle
+// /// @param stack holds the stack
+// void	rotations_b(t_stack *stack);
+
+// values :
+
+// /// @param stack->min is the smallest int in the stack can be set in a and in b
+// /// @param stack->pos[i] a/b the position of the elements in the stack
+// /// @param b->distance[i]  the distance (count of moves) of the element to the goal
+// /// @param b->goal[i] is the smallest element in a that is still 
+// /// larger than the given element in b
+// /// the finish position of the element in stack a
+// /// if not foundsets the goal to the position of the smallest element in a
+// /// @param b->nearest[i] is true if the element is the nearest all other are false
+// /// @param stack->midle[i] a/b true or false if the element is under or above the midlebrief sets the distance of the elements in the stack between the goal
+// /// and the element which will be pushed
+// /// @param a stack a /// not used
+// /// @param b->distance[i]  the distance of the element to the goal
+// void	count_distance(t_link *a, t_link *b);
+
+// /// @brief gives the nearest element for the b stack to push it checks the lowest b->distance
+// /// @param b->nearest[i] is true if the element is the nearest all other are false
+// /// @param a stack a /// not used
+// void	give_nearest(t_link *b);
+
+// /// @brief finds the position of the smallest element in the stack and saves it in stack->min
+// /// @param stack->min the smallest int in the stack
+// /// @return @param position of the smallest element
+// int	find_min(t_link *stack);
+
+// /// @brief searches the position of the nearearest element in stack a. puts the target on the
+// /// element it holds and rotates it up if it is under the midle or down if it is above the midle
+// /// @param stack holds the stack
+// void	rotations_b(t_stack *stack);
+
+// values :
+
+// /// @param stack->min is the smallest int in the stack can be set in a and in b
+// /// @param stack->pos[i] a/b the position of the elements in the stack
+// /// @param b->distance[i]  the distance (count of moves) of the element to the goal
+// /// @param b->goal[i] is the smallest element in a that is still 
+// /// larger than the given element in b
+// /// the finish position of the element in stack a
+// /// if not foundsets the goal to the position of the smallest element in a
+// /// @param b->nearest[i] is true if the element is the nearest all other are false
+// /// @param stack->midle[i] a/b true or false if the element is under or above the midle

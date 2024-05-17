@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/17 23:09:20 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 23:25:54 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 	}
 	if (stack->a->min == true)
 		error3(stack, 1);
-	stack->a->arr = malloc(sizeof(sizeof(ssize_t) + 1)  * count);
+	stack->a->arr = malloc((sizeof(ssize_t) + 1)  * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
 	stack->a->count = count;
-	stack->b->arr = malloc(sizeof(sizeof(ssize_t) + 1) * count);
+	stack->b->arr = malloc((sizeof(ssize_t) + 1) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
