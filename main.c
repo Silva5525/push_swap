@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/13 14:56:31 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:28:05 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 /// @param stack holds the stacks a and b
 /// @param numbers holds the split string
 /// @param count number countet of the split string
-static void	copy_free_numbers(t_stack *stack, char **numbers, ssize_t count)
+static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 {
-	ssize_t		i;
+	int		i;
 	bool	wrong;
 
 	i = 0;
@@ -29,7 +29,7 @@ static void	copy_free_numbers(t_stack *stack, char **numbers, ssize_t count)
 		stack->a->arr[i] = ft_ato_ssize_t(numbers[i]);
 		if (numbers[i][0] == '-' && (numbers[i][1] < '0' || numbers[i][1] > '9'))
 			wrong = true;
-		if (stack->a->arr[i] < -2147483649 && stack->a->arr[i] > 2147483648)
+		if (stack->a->arr[i] < -2147483648 || stack->a->arr[i] > 2147483647)
 			wrong = true;
 		free(numbers[i]);
 		i++;
@@ -49,25 +49,26 @@ static void	copy_free_numbers(t_stack *stack, char **numbers, ssize_t count)
 /// @param stack 
 void	str_c_to_ssize_t(char *argv, t_stack *stack)
 {
-	char	**numbers;
-	ssize_t		count;
+	char		**numbers;
+	int		count;
 
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
-		error0(0);
+		error3(stack, 0);
 	count = 1;
 	while (numbers[count])
 	{
-		if (ft_is_digit(numbers[count], stack)
-			|| (numbers[count][0] == '-' && numbers[count - 1][0] == '-'))
-			error0(8);
+		if (ft_is_digit(numbers[count], stack))
+			error3(stack, 8);
 		count++;
 	}
-	stack->a->arr = malloc(sizeof(ssize_t) * count);
+	if (stack->a->min == true)
+		error3(stack, 1);
+	stack->a->arr = malloc(sizeof(sizeof(ssize_t) + 1)  * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
 	stack->a->count = count;
-	stack->b->arr = malloc(sizeof(ssize_t) * count);
+	stack->b->arr = malloc(sizeof(sizeof(ssize_t) + 1) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
@@ -77,18 +78,21 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 void	char_to_ssize_t(char **argv, t_stack *stack)
 {
 	ssize_t	i;
-	ssize_t	count;
+	int	count;
 
+	stack->a->min = false;
 	i = 1;
 	count = 1;
-	if (!argv[1] || !argv[2])
-		error0(5);
+	// if (!argv[1] || !argv[2])
+	// 	error3(stack, 5);
 	while (argv[count])
 	{
 		if (ft_is_digit(argv[count], stack))
-			error0(1);
+			error3(stack, 1);
 		count++;
 	}
+	if (stack->a->min == true)
+		error3(stack, 3);
 	stack->a->arr = malloc((sizeof(ssize_t) + 1) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
@@ -132,10 +136,10 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		char_to_ssize_t(argv, stack);
 	check_stack(stack);
-	if (stack->a->count == 1)
+	if (stack->a->count == 1 )
 	{
 		free_iter(stack);
-		return (0);
+		exit(EXIT_SUCCESS);
 	}
 	init_int(stack);
 	init(stack);

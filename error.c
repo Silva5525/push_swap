@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:22:25 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/13 14:45:53 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 20:17:55 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,14 @@ void	error0(ssize_t err_num)
 
 void	error3(t_stack *stack, ssize_t err_num)
 {
+	if (err_num == -1)
+		ft_write(2, "Error\n Use ./push_swap \"1 2 3 .. \" OR 1 2 3..\n", 47);
 	if (err_num == 10)
 		ft_write(2, "Error\n Double Number\n", 22);
 	if (err_num == 0)
 		ft_write(2, "Error\n Malloc fail\n", 20);
 	if (err_num == 1)
-		ft_write(2, "Error\n Malloc fail\n", 20);
+		ft_write(2, "Error\n no or only one Number\n", 30);
 	if (err_num == 2)
 		ft_write(2, "Error\n sorted\n", 15);
 	if (err_num == 3)

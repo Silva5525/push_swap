@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 13:49:02 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/12 16:09:54 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:11:22 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,20 @@
 ssize_t	ft_is_digit(char *str, t_stack *stack)
 {
 	ssize_t	i;
-
+	stack->a->min = false;
+	
 	i = 0;
 	(void)stack;
 	if (str[i] == '-')
 		i++;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i] && str[i] != '-'))
+		if (!ft_isdigit(str[i]))
 			return (EXIT_FAILURE);
 		i++;
 	}
+	if (i == 1 && str[0] == '-')
+		stack->a->min = true;
 	return (EXIT_SUCCESS);
 }
 

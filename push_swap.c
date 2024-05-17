@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:16:59 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/13 14:58:21 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 20:33:38 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	init_stack(t_stack **stack)
 {
 	*stack = malloc(sizeof(t_stack));
 	if (!*stack)
-		error0(0);
+		error3(*stack, 0);
 	(*stack)->a = malloc(sizeof(t_link));
 	if (!(*stack)->a)
 		error3(*stack, 0);

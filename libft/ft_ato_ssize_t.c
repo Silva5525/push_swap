@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_ato_ssize_t.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 23:27:17 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/03/27 13:15:00 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:00:51 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /// pointed to by str to int representation
 /// @param str the initial portion
 /// @return the int representation
-int	ft_ato_ssize_t(const char *str)
+ssize_t	ft_ato_ssize_t(const char *str)
 {
 	ssize_t	hold;
 	ssize_t	reverse;

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:13:48 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/04 11:12:49 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:01:17 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_atoi(const char *str);
 int		ft_isalnum(char c);
 int		ft_isalpha(int a);
 int		ft_isascii(int a);
-int		ft_isdigit(int d);
+int		ft_isdigit(char d);
 int		ft_isprint(int a);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
@@ -83,7 +83,7 @@ int		ft_intlen(int n);
 void	ft_lstiter_ptr(t_list *lst, void (*f)(void *, void *), void *ptr);
 t_list	*ft_lstget(t_list *lst, int index);
 ssize_t	ft_strcwords(char *str, char delimeter);
-int		ft_ato_ssize_t(const char *str);
+ssize_t	ft_ato_ssize_t(const char *str);
 
 ssize_t	ft_write(int fd, const void *buf, size_t count);
 

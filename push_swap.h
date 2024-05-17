@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:06:39 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/11 14:03:31 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 20:31:14 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ ssize_t			get_nearest(t_link *stack);
 /// utils.c
 ssize_t			min_i(t_link *stack);
 void			init(t_stack *stack);
-// void			map(t_stack *stack);
 void			init_int(t_stack *stack);
 void			check_position(t_link *stack);
 
