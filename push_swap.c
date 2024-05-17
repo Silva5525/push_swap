@@ -12,20 +12,20 @@
 
 #include "push_swap.h"
 
-/// @brief part 2 of init_int mallocs the needed memory for the sorting values
+/// @brief part 2 of init_ssize_t mallocs the needed memory for the sorting values
 /// @param stack hold the stacks a and b
 /// @param count has the count of all elements in the stack
-static void	init_int2(t_stack *stack, int count)
+static void	init_ssize_t2(t_stack *stack, ssize_t count)
 {
 	if (!stack->a->distance)
 		error3(stack, 0);
-	stack->a->goal = malloc(sizeof(int) * count);
+	stack->a->goal = malloc(sizeof(ssize_t) * count);
 	if (!stack->a->goal)
 		error3(stack, 0);
-	stack->b->distance = malloc(sizeof(int) * count);
+	stack->b->distance = malloc(sizeof(ssize_t) * count);
 	if (!stack->b->distance)
 		error3(stack, 0);
-	stack->b->goal = malloc(sizeof(int) * count);
+	stack->b->goal = malloc(sizeof(ssize_t) * count);
 	if (!stack->b->goal)
 		error3(stack, 0);
 	stack->b->nearest = malloc(sizeof(bool) * count);
@@ -40,33 +40,33 @@ static void	init_int2(t_stack *stack, int count)
 /// @param stack holds the stacks a and b
 void	init_int(t_stack *stack)
 {
-	int	count;
+	ssize_t	count;
 
 	count = stack->a->count + stack->b->count;
-	stack->a->pos = malloc(sizeof(int) * count);
+	stack->a->pos = malloc(sizeof(ssize_t) * count);
 	if (!stack->a->pos)
 		error3(stack, 0);
-	stack->a->midle = malloc(sizeof(int) * count);
+	stack->a->midle = malloc(sizeof(ssize_t) * count);
 	if (!stack->a->midle)
 		error3(stack, 0);
-	stack->b->pos = malloc(sizeof(int) * count);
+	stack->b->pos = malloc(sizeof(ssize_t) * count);
 	if (!stack->b->pos)
 		error3(stack, 0);
-	stack->b->midle = malloc(sizeof(int) * count);
+	stack->b->midle = malloc(sizeof(ssize_t) * count);
 	if (!stack->b->midle)
 		error3(stack, 0);
-	stack->a->distance = malloc(sizeof(int) * count);
-	init_int2(stack, count);
+	stack->a->distance = malloc(sizeof(ssize_t) * count);
+	init_ssize_t2(stack, count);
 }
 
 /// @brief finds the position of the smallest element
 /// in the stack and saves it in stack->min
-/// @param stack->min the smallest int in the stack
+/// @param stack->min the smallest ssize_t in the stack
 /// @return @param position of the smallest element
-int	min_i(t_link *stack)
+ssize_t	min_i(t_link *stack)
 {
-	int	i;
-	int	position;
+	ssize_t	i;
+	ssize_t	position;
 
 	i = 0;
 	stack->min = INT_MAX;
@@ -102,9 +102,9 @@ void	init_stack(t_stack **stack)
 // 	ft_sort(stack);
 // }
 
-// int	ft_place(t_stack *stack)
+// ssize_t	ft_place(t_stack *stack)
 // {
-// 	int	i;
+// 	ssize_t	i;
 // 	i = 1;
 // 	if (stack->a->arr[0] > stack->b->arr[0]
 // 	&& stack->a->arr[0] < stack->b->arr[stack->b->count - 1])

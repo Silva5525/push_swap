@@ -79,17 +79,29 @@ void	free_iter(t_stack *stack)
 		free(stack->a->arr);
 		stack->a->arr = NULL;
 	}
-	free(stack->a);
+	if (stack->a != NULL)
+	{
+		free(stack->a);
+		stack->a = NULL;
+	}
 	if (stack->b->arr != NULL)
 	{
 		free(stack->b->arr);
 		stack->b->arr = NULL;
 	}
-	free(stack->b);
-	free(stack);
+	if (stack->b != NULL)
+	{
+		free(stack->b);
+		stack->b = NULL;
+	}
+	if (stack != NULL)
+	{
+		free(stack);
+		stack = NULL;
+	}
 }
 
-void	error0(int err_num)
+void	error0(ssize_t err_num)
 {
 	if (err_num == -1)
 		ft_write(2, "Error\n Use ./push_swap \"1 2 3 .. \" OR 1 2 3..\n", 47);
@@ -102,7 +114,7 @@ void	error0(int err_num)
 	exit(EXIT_FAILURE);
 }
 
-void	error3(t_stack *stack, int err_num)
+void	error3(t_stack *stack, ssize_t err_num)
 {
 	if (err_num == 10)
 		ft_write(2, "Error\n Double Number\n", 22);
@@ -114,6 +126,11 @@ void	error3(t_stack *stack, int err_num)
 		ft_write(2, "Error\n sorted\n", 15);
 	if (err_num == 3)
 		ft_write(2, "Error\n only one Number or dobule '-'\n", 38);
+	if (err_num == 5)
+	{
+		free_iter(stack);
+		exit(EXIT_SUCCESS);
+	}
 	if (err_num == 8)
 		ft_write(2, "Error\n found non Digit or non INT\n", 35);
 	free_iter(stack);

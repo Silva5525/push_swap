@@ -17,7 +17,7 @@
 /// @param link the array to swap
 static void	swap(t_link *link)
 {
-	int	tmp;
+	ssize_t	tmp;
 
 	if (!link || link->count < 2)
 		return ;

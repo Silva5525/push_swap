@@ -21,10 +21,10 @@
 /// if not foundsets the goal to the position of the smallest element in a
 static void	give_position(t_link *a, t_link *b)
 {
-	int		position;
-	int		i;
-	int		j;
-	int		big;
+	ssize_t		position;
+	ssize_t		i;
+	ssize_t		j;
+	ssize_t		big;
 
 	i = 0;
 	while (i < b->count)
@@ -55,8 +55,8 @@ static void	give_position(t_link *a, t_link *b)
 /// the midle
 void	check_position(t_link *stack)
 {
-	int	i;
-	int	midle;
+	ssize_t	i;
+	ssize_t	midle;
 
 	midle = stack->count / 2;
 	i = 0;
@@ -74,7 +74,7 @@ void	check_position(t_link *stack)
 /// @param b->distance the distance of the element to the goal
 void	count_distance(t_link *a, t_link *b)
 {
-	int	i;
+	ssize_t	i;
 
 	i = 0;
 	while (i < b->count)
@@ -97,8 +97,8 @@ void	count_distance(t_link *a, t_link *b)
 /// @param a stack a /// not used
 void	give_nearest(t_link *b)
 {
-	int	best;
-	int	i;
+	ssize_t	best;
+	ssize_t	i;
 
 	i = 0;
 	if (b->count <= 1)

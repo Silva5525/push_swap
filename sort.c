@@ -15,8 +15,8 @@
 /// is not correct
 void	rotations_b(t_stack *stack)
 {
-	int	near_pos;
-	int	target;
+	ssize_t	near_pos;
+	ssize_t	target;
 
 	near_pos = get_nearest(stack->b);
 	target = stack->b->arr[near_pos];
@@ -32,9 +32,9 @@ void	rotations_b(t_stack *stack)
 /// 
 void	rotations_a(t_stack *stack)
 {
-	int	near_pos;
-	int	goal;
-	int	target;
+	ssize_t	near_pos;
+	ssize_t	goal;
+	ssize_t	target;
 
 	near_pos = get_nearest(stack->b);
 	goal = stack->b->goal[near_pos];
@@ -54,8 +54,8 @@ void	rotations_a(t_stack *stack)
 /// @param stack the holder of the stack a and b
 void	rotations_7(t_stack *stack)
 {
-	int	min_pos;
-	int	target;
+	ssize_t	min_pos;
+	ssize_t	target;
 
 	init(stack);
 	min_pos = min_i(stack->a);
@@ -73,21 +73,21 @@ void	rotations_7(t_stack *stack)
 // /// is not correct
 // void	rotations_a(t_stack *stack)
 // {
-// 	int hold;
-// 	int min;
+// 	ssize_t hold;
+// 	ssize_t min;
 // 	init(stack);
 // 	min = get_nearest(stack->b);
 // 	hold = min;
-// 	printf("hold = %d\n", min);
+// 	prssize_tf("hold = %d\n", min);
 // 	while (stack->a->arr[0] != hold)
 // 	{
-// 		printf("hold = %d\n", min);
-// 		printf("b->goal[hold] = %d\n", stack->b->goal[hold]);
-// 		printf("b->midle[hold] = %d\n", stack->b->midle[hold]);
-// 		printf("a->distance[hold] = %d\n", stack->b->distance[hold]);
-// 		printf("a->pos[hold] = %d\n", stack->b->pos[hold]);
-// 		printf("b->nearest[hold] = %d\n", stack->b->nearest[hold]);	
-// 		printf("rotate arr[0] = %d\n min a = %d\n", stack->b->arr[0], hold);
+// 		prssize_tf("hold = %d\n", min);
+// 		prssize_tf("b->goal[hold] = %d\n", stack->b->goal[hold]);
+// 		prssize_tf("b->midle[hold] = %d\n", stack->b->midle[hold]);
+// 		prssize_tf("a->distance[hold] = %d\n", stack->b->distance[hold]);
+// 		prssize_tf("a->pos[hold] = %d\n", stack->b->pos[hold]);
+// 		prssize_tf("b->nearest[hold] = %d\n", stack->b->nearest[hold]);	
+// 		prssize_tf("rotate arr[0] = %d\n min a = %d\n", stack->b->arr[0], hold);
 // 		if (stack->a->midle[hold])
 // 			ra(stack->a);
 // 		else
@@ -99,9 +99,9 @@ void	rotations_7(t_stack *stack)
 /// @brief checks if the list is sorted in ascending order
 /// @param stack is the struct holder of the stack a and b but it checks only a
 /// @return 1 if the list is sorted, 0 if not
-int	sorted(t_link *stack)
+ssize_t	sorted(t_link *stack)
 {
-	int	i;
+	ssize_t	i;
 
 	i = 1;
 	while (i < stack->count)
@@ -133,9 +133,9 @@ void	sort_3(t_stack *stack)
 //// @param stack is the struct holder of the stack a and b but it sorts only a
 // void	insertion_sort1(t_stack *stack)
 // {
-// 	int	i;
-// 	int	j;
-// 	int	tmp;
+// 	ssize_t	i;
+// 	ssize_t	j;
+// 	ssize_t	tmp;
 
 // 	i = 1;
 // 	while (i < stack->map->count)
@@ -154,8 +154,8 @@ void	sort_3(t_stack *stack)
 
 // void	insertion_sort(t_stack *stack)
 // {
-// 	int	i;
-// 	int	j;
+// 	ssize_t	i;
+// 	ssize_t	j;
 
 // 	i = 1;
 // 	while (i < stack->a->count)
@@ -179,7 +179,7 @@ void	sort_3(t_stack *stack)
 /// @param stack the stack holder
 // void	map(t_stack *stack)
 // {
-// 	int		i;
+// 	ssize_t		i;
 
 // 	i = 0;
 // 	while(stack->a->count > i)
@@ -215,18 +215,18 @@ void	sort_3(t_stack *stack)
 	// }
 // }
 
-// int main() 
+// ssize_t main() 
 // {
-//     int numbers[] = {10, 20, -50, -30, 40, 50};
+//     ssize_t numbers[] = {10, 20, -50, -30, 40, 50};
 //     t_stack myStack;
 //     myStack->a->arr = numbers;
 //     myStack->count = sizeof(numbers) / sizeof(numbers[0]);
 
-//     int inBetweenValue = find_in_between(&myStack);
+//     ssize_t inBetweenValue = find_in_between(&myStack);
 //     if (inBetweenValue != -1) {
-//         printf("An in-between value in the stack is: %d\n", inBetweenValue);
+//         prssize_tf("An in-between value in the stack is: %d\n", inBetweenValue);
 //     } else {
-//         printf("No in-between value found (stack may have too few distinct
+//         prssize_tf("No in-between value found (stack may have too few distinct
 // elements).\n");
 //     }
 

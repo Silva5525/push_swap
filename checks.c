@@ -12,27 +12,27 @@
 
 #include "push_swap.h"
 
-int	ft_is_digit(char *str)
+ssize_t	ft_is_digit(char *str, t_stack *stack)
 {
-	int	i;
+	ssize_t	i;
 
 	i = 0;
+	(void)stack;
 	if (str[i] == '-')
 		i++;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i] && str[i] != '-'))
 			return (EXIT_FAILURE);
 		i++;
 	}
 	return (EXIT_SUCCESS);
 }
 
-
 void	check_stack(t_stack *stack)
 {
-	int	i;
-	int	j;
+	ssize_t	i;
+	ssize_t	j;
 
 	j = 0;
 	i = 0;

@@ -83,6 +83,7 @@ int		ft_intlen(int n);
 void	ft_lstiter_ptr(t_list *lst, void (*f)(void *, void *), void *ptr);
 t_list	*ft_lstget(t_list *lst, int index);
 ssize_t	ft_strcwords(char *str, char delimeter);
+int		ft_ato_ssize_t(const char *str);
 
 ssize_t	ft_write(int fd, const void *buf, size_t count);
 

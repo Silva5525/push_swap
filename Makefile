@@ -12,8 +12,7 @@
 
 NAME	:= push_swap
 CC		:= cc
-CFLAGS	:= -Wall -Werror -Wextra -g
-#-Wunreachable-code
+CFLAGS	:= -Wall -Werror -Wextra -g -Wunreachable-code 
 #-g -fsanitize=address -Ofast 
 # valgrind --leak-check=full ./meinProgramm
 

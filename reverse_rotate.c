@@ -19,7 +19,7 @@
 /// @param link the list to reverse_rotate
 static void	reverse_rotate(t_link *link)
 {
-	int	tmp;
+	ssize_t	tmp;
 	int	i;
 
 	if (!link || link->count < 2)

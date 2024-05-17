@@ -16,7 +16,7 @@
 /// @param link The list to rotate.
 static void	rotate(t_link *link)
 {
-	int	tmp;
+	ssize_t	tmp;
 	int	i;
 
 	i = 0;

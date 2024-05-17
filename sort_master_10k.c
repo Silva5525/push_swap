@@ -14,9 +14,9 @@
 
 /// @brief returns the position of the nearest element in the stack given
 /// @param stack the t_link element which is a or b
-int	get_nearest(t_link *stack)
+ssize_t	get_nearest(t_link *stack)
 {
-	int	i;
+	ssize_t	i;
 
 	i = 0;
 	while (i < stack->count)
@@ -28,12 +28,12 @@ int	get_nearest(t_link *stack)
 	return (0);
 }
 
-static void	double_rotatations(t_stack *stack, int near)
+static void	double_rotatations(t_stack *stack, ssize_t near)
 {
-	int	arr0;
-	int	goal_near;
-	int	arr_near;
-	int	midle_near;
+	ssize_t	arr0;
+	ssize_t	goal_near;
+	ssize_t	arr_near;
+	ssize_t	midle_near;
 
 	arr0 = stack->b->arr[0];
 	goal_near = stack->b->goal[near];
@@ -60,7 +60,7 @@ static void	double_rotatations(t_stack *stack, int near)
 /// @param stack 
 void	push_sort(t_stack *stack)
 {
-	int	near;
+	ssize_t	near;
 
 	init(stack);
 	near = get_nearest(stack->b);
@@ -88,8 +88,8 @@ void	push_swap_7(t_stack *stack)
 /// @param stack holds the stacks a and b 
 void	push_swap(t_stack *stack)
 {
-	int	min;
-	int	pos_min;
+	ssize_t	min;
+	ssize_t	pos_min;
 
 	if (!sorted(stack->a))
 	{
