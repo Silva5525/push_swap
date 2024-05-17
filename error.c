@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:22:25 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/17 20:17:55 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 23:04:45 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ void	error3(t_stack *stack, ssize_t err_num)
 		ft_write(2, "Error\n sorted\n", 15);
 	if (err_num == 3)
 		ft_write(2, "Error\n only one Number or dobule '-'\n", 38);
+	if (err_num == 4)
+		ft_write(2, "Error\n wrong input\n", 20);
 	if (err_num == 5)
 	{
 		free_iter(stack);

@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/17 22:28:05 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 23:09:20 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 	while (i < count)
 	{
 		stack->a->arr[i] = ft_ato_ssize_t(numbers[i]);
-		if (numbers[i][0] == '-' && (numbers[i][1] < '0' || numbers[i][1] > '9'))
+		if ((numbers[i][0] == '-' && (numbers[i][1] < '0' || numbers[i][1] > '9'))
+			|| numbers[i][0] == '+')
 			wrong = true;
 		if (stack->a->arr[i] < -2147483648 || stack->a->arr[i] > 2147483647)
 			wrong = true;
@@ -37,7 +38,7 @@ static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 	if (wrong)
 	{
 		free(numbers);
-		error3(stack, 3);
+		error3(stack, 4);
 	}
 	free(numbers);
 }
@@ -51,11 +52,11 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 {
 	char		**numbers;
 	int		count;
-
+	
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
 		error3(stack, 0);
-	count = 1;
+	count = 0;
 	while (numbers[count])
 	{
 		if (ft_is_digit(numbers[count], stack))
@@ -103,6 +104,9 @@ void	char_to_ssize_t(char **argv, t_stack *stack)
 	while (i < count)
 	{
 		stack->a->arr[i - 1] = ft_ato_ssize_t(argv[i]);
+		if (stack->a->arr[i - 1] < -2147483648 || stack->a->arr[i - 1] > 2147483647
+			|| stack->a->arr[i - 1] == '+')
+			error3(stack, 4);
 		i++;
 	}
 	stack->a->count = count - 1;

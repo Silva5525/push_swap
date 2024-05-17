@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 22:01:03 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/17 21:49:31 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/17 23:08:30 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,15 @@ static char	**split_i_ft_split(const char *s, char c, char **out1)
 	return (out1);
 }
 
+
+/// @brief Allocates (with malloc(3)) and returns an array
+/// of strings obtained by splitting ’s’ using the
+/// character ’c’ as a delimiter. The array must end
+/// with a NULL pointer.
+/// @param s string to be split
+/// @param c character to split the string
+/// @return the double array of new strings resulting from the split. 
+/// Null if fails.
 char	**ft_split(const char *s, char c)
 {
 	size_t	sub_i;
