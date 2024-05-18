@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 12:34:11 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/18 12:37:23 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 14:37:15 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static void	free2(t_stack *stack)
 	}
 }
 
+/// @brief frees the memory allocated for the stack structs.
+/// @param stack holder of the stack
 void	free_iter(t_stack *stack)
 {
 	free2(stack);

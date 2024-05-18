@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/18 13:45:54 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 14:49:49 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 		if ((numbers[i][0] == '-' && (numbers[i][1] < '0'
 			|| numbers[i][1] > '9')) || numbers[i][0] == '+')
 			wrong = true;
-		if (stack->a->arr[i] < -2147483648 || stack->a->arr[i] > 2147483647)
+		if (stack->a->arr[i] < INT_MIN || stack->a->arr[i] > INT_MAX)
 			wrong = true;
 		free(numbers[i]);
 		i++;

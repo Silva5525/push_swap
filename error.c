@@ -6,35 +6,38 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:22:25 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/18 13:48:34 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 19:28:01 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief prints the error message and frees the stack with free_iter
+/// @param stack holds the stacks a and b
+/// @param err_num error number
 void	error3(t_stack *stack, ssize_t err_num)
 {
 	if (err_num == -1)
-		ft_write(2, "Error\n Use ./push_swap \"1 2 3 .. \" OR 1 2 3..\n", 47);
+		ft_write(2, "Error\n", 7);
 	if (err_num == 10)
-		ft_write(2, "Error\n Double Number\n", 22);
+		ft_write(2, "Error\n", 7);
 	if (err_num == 0)
-		ft_write(2, "Error\n Malloc fail\n", 20);
+		ft_write(2, "Error\n", 7);
 	if (err_num == 1)
-		ft_write(2, "Error\n no or only one Number\n", 30);
+		ft_write(2, "Error\n", 7);
 	if (err_num == 2)
-		ft_write(2, "Error\n sorted\n", 15);
+		ft_write(2, "Error\n\n", 7);
 	if (err_num == 3)
-		ft_write(2, "Error\n only one Number or dobule '-'\n", 38);
+		ft_write(2, "Error\n", 7);
 	if (err_num == 4)
-		ft_write(2, "Error\n wrong input\n", 20);
+		ft_write(2, "Error\n", 7);
 	if (err_num == 5)
 	{
 		free_iter(stack);
 		exit(EXIT_SUCCESS);
 	}
 	if (err_num == 8)
-		ft_write(2, "Error\n found non Digit or non INT\n", 35);
+		ft_write(2, "Error\n", 6);
 	free_iter(stack);
 	exit(EXIT_FAILURE);
 }
