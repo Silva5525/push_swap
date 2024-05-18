@@ -6,7 +6,7 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 11:57:39 by wdegraf           #+#    #+#              #
-#    Updated: 2024/05/11 22:30:42 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/05/18 13:37:51 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ HEADERS	:= -I ./include -I $(LIBFT)
 LIBS	:= -L$(LIBFT) -lft
 
 SRCS	:= main.c error.c sort.c swap.c push.c rotate.c reverse_rotate.c \
-			push_swap.c utils.c sort_master_10k.c checks.c
+			push_swap.c utils.c init.c checks.c free_iter.c 
 OBJS	:= ${SRCS:.c=.o}
 
 all: libft $(NAME)

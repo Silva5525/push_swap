@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/18 00:03:05 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 13:45:54 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	copy_free_numbers(t_stack *stack, char **numbers, int count)
 	while (i < count)
 	{
 		stack->a->arr[i] = ft_ato_ssize_t(numbers[i]);
-		if ((numbers[i][0] == '-' && (numbers[i][1] < '0' || numbers[i][1] > '9'))
-			|| numbers[i][0] == '+')
+		if ((numbers[i][0] == '-' && (numbers[i][1] < '0'
+			|| numbers[i][1] > '9')) || numbers[i][0] == '+')
 			wrong = true;
 		if (stack->a->arr[i] < -2147483648 || stack->a->arr[i] > 2147483647)
 			wrong = true;
@@ -52,7 +52,7 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 {
 	char		**numbers;
 	size_t		count;
-	
+
 	numbers = ft_split(argv, ' ');
 	if (!numbers)
 		error3(stack, 0);
@@ -65,7 +65,7 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 	}
 	if (stack->a->min == true)
 		error3(stack, 1);
-	stack->a->arr = malloc(sizeof(ssize_t)  * count);
+	stack->a->arr = malloc(sizeof(ssize_t) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
 	stack->a->count = count;
@@ -76,16 +76,37 @@ void	str_c_to_ssize_t(char *argv, t_stack *stack)
 	copy_free_numbers(stack, numbers, count);
 }
 
+/// @brief changes the char numbers to ssize_t and saves them in the stack_a
+/// while checking for INT_MIN and INT_MAX.
+/// @param argv 
+/// @param stack 
+void	char_copy(char **argv, t_stack *stack)
+{
+	ssize_t		i;
+
+	i = 1;
+	while (i < (stack->a->count + 1))
+	{
+		stack->a->arr[i - 1] = ft_ato_ssize_t(argv[i]);
+		if (stack->a->arr[i - 1] < INT_MIN
+			|| stack->a->arr[i - 1] > INT_MAX)
+			error3(stack, 4);
+		i++;
+	}
+}
+
+/// @brief counts the numbers of argv and checks if they are digits with
+/// ft_is_digit then allocates the needed memory for the stack_a and stack_b
+/// and saves the numbers in the stack_a with char_copy.
+/// @param argv the arguments
+/// @param stack holder of the stack
 void	char_to_ssize_t(char **argv, t_stack *stack)
 {
 	size_t	i;
 	size_t	count;
 
-	stack->a->min = false;
 	i = 1;
 	count = 1;
-	// if (!argv[1] || !argv[2])
-	// 	error3(stack, 5);
 	while (argv[count])
 	{
 		if (ft_is_digit(argv[count], stack))
@@ -94,46 +115,31 @@ void	char_to_ssize_t(char **argv, t_stack *stack)
 	}
 	if (stack->a->min == true)
 		error3(stack, 3);
-	stack->a->arr = malloc((sizeof(ssize_t) + 1) * count);
+	stack->a->arr = malloc((sizeof(ssize_t)) * count);
 	if (!stack->a->arr)
 		error3(stack, 0);
 	stack->a->count = count - 1;
-	stack->b->arr = malloc((sizeof(ssize_t) + 1) * count);
+	stack->b->arr = malloc((sizeof(ssize_t)) * count);
 	if (!stack->b->arr)
 		error3(stack, 0);
 	stack->b->count = 0;
-	while (i < count)
-	{
-		stack->a->arr[i - 1] = ft_ato_ssize_t(argv[i]);
-		if (stack->a->arr[i - 1] < -2147483648 || stack->a->arr[i - 1] > 2147483647
-			)
-			error3(stack, 4);
-		i++;
-	}
-	stack->a->count = count - 1;
+	char_copy(argv, stack);
 }
 
-static	void	operation_cases(t_stack *stack)
-{
-	if (stack->a->count == 2)
-	{
-		if (stack->a->arr[0] > stack->a->arr[1])
-			sa(stack->a);
-	}
-	else if (stack->a->count == 3)
-		sort_3(stack);
-	else if (stack->a->count <= 7)
-		push_swap_7(stack);
-	else if (stack->a->count > 7)
-		push_swap(stack);
-}
-
+/// @brief Initializes the stack and checks if the arguments are valid
+/// and if the stack struct with malloc sends the stack to the sorting
+/// functions and frees the stack after using it
+/// @param stack the stack holder for the stack a and b
+/// @param argc the argument counted
+/// @param argv the arguments
+/// @return 0 if the program ends or nothing is to sort.
+/// else the program will sort the stack and return 0
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 
 	stack = NULL;
-	if (argc < 2 ||  !argv[1][0])
+	if (argc < 2 || !argv[1][0])
 		return (0);
 	init_stack(&stack);
 	if (argc == 2)
@@ -141,7 +147,7 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		char_to_ssize_t(argv, stack);
 	check_stack(stack);
-	if (stack->a->count == 1 )
+	if (stack->a->count == 1)
 	{
 		free_iter(stack);
 		exit(EXIT_SUCCESS);
@@ -149,25 +155,6 @@ int	main(int argc, char **argv)
 	init_int(stack);
 	init(stack);
 	operation_cases(stack);
-	// printf("stack->a->count: %ld\n", stack->a->count);
-	// for (int i = 0; i < stack->a->count; i++)
-	// {
-	// 	printf("%ld\n", stack->a->arr[i]);
-	// }
 	free_iter(stack);
 	return (0);
 }
-
-	// prssize_tf("stack->a->count: %d\n", stack->a->count);
-	// i = 0;
-	// while (i < stack->a->count)
-	// {
-	// 	prssize_tf("stack->a->arr[%d]: %d\n", i, stack->a->arr[i]);
-	// 	i++;
-	// }
-	// i = 0;
-	// while (i < stack->b->count)
-	// {
-	// 	prssize_tf("stack->b->arr[%d]: %d\n", i, stack->b->arr[i]);
-	// 	i++;
-	// }

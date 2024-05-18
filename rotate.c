@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 11:51:38 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/04/18 14:20:08 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 12:45:53 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void	rotate(t_link *link)
 {
 	ssize_t	tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!link || link->count < 2)

@@ -1,123 +1,113 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort_master_10k.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 13:16:59 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/17 20:33:38 by wdegraf          ###   ########.fr       */
+/*   Created: 2024/04/19 22:11:39 by wdegraf           #+#    #+#             */
+/*   Updated: 2024/05/18 12:43:24 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// @brief part 2 of init_ssize_t mallocs the needed memory for the sorting values
-/// @param stack hold the stacks a and b
-/// @param count has the count of all elements in the stack
-static void	init_ssize_t2(t_stack *stack, ssize_t count)
-{
-	if (!stack->a->distance)
-		error3(stack, 0);
-	stack->a->goal = malloc(sizeof(ssize_t) * count);
-	if (!stack->a->goal)
-		error3(stack, 0);
-	stack->b->distance = malloc(sizeof(ssize_t) * count);
-	if (!stack->b->distance)
-		error3(stack, 0);
-	stack->b->goal = malloc(sizeof(ssize_t) * count);
-	if (!stack->b->goal)
-		error3(stack, 0);
-	stack->b->nearest = malloc(sizeof(bool) * count);
-	if (!stack->b->nearest)
-		error3(stack, 0);
-	stack->a->nearest = malloc(sizeof(bool) * count);
-	if (!stack->a->nearest)
-		error3(stack, 0);
-}
-
-/// @brief mallocs the needed memory for the sorting values
-/// @param stack holds the stacks a and b
-void	init_int(t_stack *stack)
-{
-	ssize_t	count;
-
-	count = stack->a->count + stack->b->count;
-	stack->a->pos = malloc(sizeof(ssize_t) * count);
-	if (!stack->a->pos)
-		error3(stack, 0);
-	stack->a->midle = malloc(sizeof(ssize_t) * count);
-	if (!stack->a->midle)
-		error3(stack, 0);
-	stack->b->pos = malloc(sizeof(ssize_t) * count);
-	if (!stack->b->pos)
-		error3(stack, 0);
-	stack->b->midle = malloc(sizeof(ssize_t) * count);
-	if (!stack->b->midle)
-		error3(stack, 0);
-	stack->a->distance = malloc(sizeof(ssize_t) * count);
-	init_ssize_t2(stack, count);
-}
-
-/// @brief finds the position of the smallest element
-/// in the stack and saves it in stack->min
-/// @param stack->min the smallest ssize_t in the stack
-/// @return @param position of the smallest element
-ssize_t	min_i(t_link *stack)
+/// @brief returns the position of the nearest element in the stack given
+/// @param stack the t_link element which is a or b
+ssize_t	get_nearest(t_link *stack)
 {
 	ssize_t	i;
-	ssize_t	position;
 
 	i = 0;
-	stack->min = INT_MAX;
-	position = 0;
 	while (i < stack->count)
 	{
-		if (stack->arr[i] < stack->min)
-		{
-			stack->min = stack->arr[i];
-			position = i;
-		}
+		if (stack->nearest[i])
+			return (i);
 		i++;
 	}
-	return (position);
+	return (0);
 }
 
-void	init_stack(t_stack **stack)
+static void	double_rotatations(t_stack *stack, ssize_t near)
 {
-	*stack = malloc(sizeof(t_stack));
-	if (!*stack)
-		error3(*stack, 0);
-	(*stack)->a = malloc(sizeof(t_link));
-	if (!(*stack)->a)
-		error3(*stack, 0);
-	(*stack)->b = malloc(sizeof(t_link));
-	if (!(*stack)->b)
-		error3(*stack, 0);
+	ssize_t	arr0;
+	ssize_t	goal_near;
+	ssize_t	arr_near;
+	ssize_t	midle_near;
+
+	arr0 = stack->b->arr[0];
+	goal_near = stack->b->goal[near];
+	arr_near = stack->b->arr[near];
+	midle_near = stack->b->midle[near];
+	if (midle_near && (arr0 > goal_near))
+	{
+		while (stack->a->arr[0] != goal_near
+			&& stack->b->arr[0] != arr_near)
+			rr(stack->a, stack->b);
+		init(stack);
+	}
+	else if (!midle_near && (arr0 > goal_near))
+	{
+		while (stack->a->arr[0] != goal_near
+			&& stack->b->arr[0] != arr_near)
+			rrr(stack->a, stack->b);
+		init(stack);
+	}
 }
 
-// void big_push_swap(t_stack stack)
-// {
+/// @brief sorts the stack a and b depending on the nearest element in b
+/// @param stack 
+void	push_sort(t_stack *stack)
+{
+	ssize_t	near;
 
-// 	ft_sort(stack);
-// }
+	init(stack);
+	near = get_nearest(stack->b);
+	double_rotatations(stack, near);
+	rotations_b(stack);
+	rotations_a(stack);
+	pa(stack->a, stack->b);
+}
 
-// ssize_t	ft_place(t_stack *stack)
-// {
-// 	ssize_t	i;
-// 	i = 1;
-// 	if (stack->a->arr[0] > stack->b->arr[0]
-// 	&& stack->a->arr[0] < stack->b->arr[stack->b->count - 1])
-// 		i = 0;
-// 	else if (stack->a->arr[0] > stack->b->max
-//	|| stack->a->arr[0] < stack->b->min)
-// 	{
-// 		// while (stack->a->arr[0] < stack->b->max)
-// 		// 	i++;
-// 		//here somehow it should be checked for 
-// 	}
-// 	else
-// 	{
-// 		tmp = stack->b->[]
-// 	}
-// }
+/// @brief sorts stack if it has between 3 and 7 elements
+/// @param stack holds the stacks a and b
+void	push_swap_7(t_stack *stack)
+{
+	if (stack->a->count <= 7 && !sorted(stack->a))
+	{
+		while (stack->a->count > 3)
+			rotations_7(stack);
+	}
+	sort_3(stack);
+	while (stack->b->count > 0)
+		pa(stack->a, stack->b);
+}
+
+/// @brief sorts the stack if it has more than 7 elements
+/// @param stack holds the stacks a and b 
+void	push_swap(t_stack *stack)
+{
+	ssize_t	min;
+	ssize_t	pos_min;
+
+	if (!sorted(stack->a))
+	{
+		while (stack->a->count > 3)
+			pb(stack->a, stack->b);
+	}
+	sort_3(stack);
+	while (stack->b->count > 0)
+		push_sort(stack);
+	min = min_i(stack->a);
+	pos_min = stack->a->arr[min];
+	if (min < (stack->a->count / 2))
+	{
+		while (stack->a->arr[0] != pos_min)
+			ra(stack->a);
+	}
+	else
+	{
+		while (stack->a->arr[0] != pos_min)
+			rra(stack->a);
+	}
+}

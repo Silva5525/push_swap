@@ -6,13 +6,15 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/05/11 12:14:49 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 13:25:31 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/// is not correct
+/// @brief rotates the stack b to the target witch is the nearest element 
+/// depending if upper or lower half position. 
+/// @param stack holder of the stack a and b
 void	rotations_b(t_stack *stack)
 {
 	ssize_t	near_pos;
@@ -29,7 +31,9 @@ void	rotations_b(t_stack *stack)
 	}
 }
 
-/// 
+/// @brief rotates the stack a to the goal target witch is the nearest element 
+/// depending if upper or lower half position. 
+/// @param stack holder of the stack a and b
 void	rotations_a(t_stack *stack)
 {
 	ssize_t	near_pos;
@@ -69,32 +73,6 @@ void	rotations_7(t_stack *stack)
 	}
 	pb(stack->a, stack->b);
 }
-
-// /// is not correct
-// void	rotations_a(t_stack *stack)
-// {
-// 	ssize_t hold;
-// 	ssize_t min;
-// 	init(stack);
-// 	min = get_nearest(stack->b);
-// 	hold = min;
-// 	prssize_tf("hold = %d\n", min);
-// 	while (stack->a->arr[0] != hold)
-// 	{
-// 		prssize_tf("hold = %d\n", min);
-// 		prssize_tf("b->goal[hold] = %d\n", stack->b->goal[hold]);
-// 		prssize_tf("b->midle[hold] = %d\n", stack->b->midle[hold]);
-// 		prssize_tf("a->distance[hold] = %d\n", stack->b->distance[hold]);
-// 		prssize_tf("a->pos[hold] = %d\n", stack->b->pos[hold]);
-// 		prssize_tf("b->nearest[hold] = %d\n", stack->b->nearest[hold]);	
-// 		prssize_tf("rotate arr[0] = %d\n min a = %d\n", stack->b->arr[0], hold);
-// 		if (stack->a->midle[hold])
-// 			ra(stack->a);
-// 		else
-// 			rra(stack->a);
-// 		init(stack);
-// 	}
-// }
 
 /// @brief checks if the list is sorted in ascending order
 /// @param stack is the struct holder of the stack a and b but it checks only a
@@ -213,22 +191,4 @@ void	sort_3(t_stack *stack)
 	// 			rra(stack->a);
 	// 	}
 	// }
-// }
-
-// ssize_t main() 
-// {
-//     ssize_t numbers[] = {10, 20, -50, -30, 40, 50};
-//     t_stack myStack;
-//     myStack->a->arr = numbers;
-//     myStack->count = sizeof(numbers) / sizeof(numbers[0]);
-
-//     ssize_t inBetweenValue = find_in_between(&myStack);
-//     if (inBetweenValue != -1) {
-//         prssize_tf("An in-between value in the stack is: %d\n", inBetweenValue);
-//     } else {
-//         prssize_tf("No in-between value found (stack may have too few distinct
-// elements).\n");
-//     }
-
-//     return 0;
 // }
