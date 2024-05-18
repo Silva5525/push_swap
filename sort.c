@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/05/18 13:25:31 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 23:42:10 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,19 @@ void	rotations_b(t_stack *stack)
 {
 	ssize_t	near_pos;
 	ssize_t	target;
+	ssize_t	midle;
 
 	near_pos = get_nearest(stack->b);
 	target = stack->b->arr[near_pos];
+	midle = (stack->b->count / 2);
 	while (stack->b->arr[0] != target)
 	{
-		if (near_pos < (stack->a->count / 2))
+		if (near_pos < midle)
 			rb(stack->b);
 		else
 			rrb(stack->b);
 	}
+	init(stack);
 }
 
 /// @brief rotates the stack a to the goal target witch is the nearest element 
@@ -39,17 +42,20 @@ void	rotations_a(t_stack *stack)
 	ssize_t	near_pos;
 	ssize_t	goal;
 	ssize_t	target;
+	ssize_t	midle;
 
 	near_pos = get_nearest(stack->b);
 	goal = stack->b->goal[near_pos];
 	target = stack->a->arr[goal];
+	midle = (stack->a->count / 2);
 	while (stack->a->arr[0] != target)
 	{
-		if (near_pos < (stack->a->count / 2))
+		if (goal < midle)
 			ra(stack->a);
 		else
 			rra(stack->a);
 	}
+	init(stack);
 }
 
 /// @brief rotates the stack a to the smallest element in the stack a.

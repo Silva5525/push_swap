@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:05:44 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/05/18 14:49:49 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/18 23:42:59 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,8 @@ void	char_copy(char **argv, t_stack *stack)
 /// @param stack holder of the stack
 void	char_to_ssize_t(char **argv, t_stack *stack)
 {
-	size_t	i;
 	size_t	count;
 
-	i = 1;
 	count = 1;
 	while (argv[count])
 	{
