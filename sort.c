@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/05/19 13:04:34 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/19 13:12:43 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,15 @@ void	rotations_7(t_stack *stack)
 {
 	ssize_t	min_pos;
 	ssize_t	target;
+	ssize_t	midle;
 
 	init(stack);
 	min_pos = min_i(stack->a);
 	target = stack->a->arr[min_pos];
+	midle = (stack->a->count / 2);
 	while (stack->a->arr[0] != target)
 	{
-		if (min_pos < (stack->a->count / 2))
+		if (min_pos < midle)
 			ra(stack->a);
 		else
 			rra(stack->a);
