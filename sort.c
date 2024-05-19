@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:46:54 by mahakala          #+#    #+#             */
-/*   Updated: 2024/05/18 23:42:10 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/05/19 13:04:34 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	rotations_b(t_stack *stack)
 		else
 			rrb(stack->b);
 	}
-	init(stack);
 }
 
 /// @brief rotates the stack a to the goal target witch is the nearest element 
@@ -55,7 +54,6 @@ void	rotations_a(t_stack *stack)
 		else
 			rra(stack->a);
 	}
-	init(stack);
 }
 
 /// @brief rotates the stack a to the smallest element in the stack a.
