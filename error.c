@@ -26,7 +26,7 @@ void	error3(t_stack *stack, ssize_t err_num)
 	if (err_num == 1)
 		ft_write(2, "Error\n", 7);
 	if (err_num == 2)
-		ft_write(2, "Error\n\n", 7);
+		ft_write(2, "Error\n", 7);
 	if (err_num == 3)
 		ft_write(2, "Error\n", 7);
 	if (err_num == 4)
